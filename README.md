@@ -1,2 +1,2 @@
 # Visual-Novel
-its a visual novel
+https://mauricehuchler.github.io/Visual-Novel/Template/Template.html
