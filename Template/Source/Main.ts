@@ -4,15 +4,15 @@ namespace Template {
 
   console.log("FudgeStory template starting");
 
-  window.addEventListener("load", start);
-
-
   export let dataForSave = {
-    Protagonist: {
+    protagonist: {
       name: "",
       furor: 0
     }
   }
+  window.addEventListener("load", start);
+
+
   function start(_event: Event): void {
 
     ƒS.Speech.hide();
