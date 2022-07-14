@@ -9,21 +9,30 @@
   <script src="FudgeStory/FudgeStory.js"></script>
   <script src="./Build/Template.js"></script>
   <title>Fudge Story Template</title>
-  <splash src="Images/Splash.png"/>
+  <splash src="Images/Splash.png" />
 </head>
 
 <body>
   <scene>
+
+    <dialog type="splash" open>
+      <img id="FudgeStoryLogo" theme="light" /> <!-- use "light" or "dark" -->
+      <p>
+        Design your splash screen here. Reposition and rescale the logo above, but do not remove.
+      </p>
+    </dialog>
+
     <canvas></canvas>
 
+
     <speech>
-      <name>Hordor</name>
-      <content>Holdedoor</content>
+      <name class=" name"></name>
+      <content class="content"></content>
     </speech>
 
-    <dialog type="text">
-      The content of a page of text for reading
+    <dialog type="text" class="decision">
     </dialog>
+
   </scene>
 </body>
 
