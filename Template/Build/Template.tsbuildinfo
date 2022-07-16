@@ -1,1 +1,56 @@
-{"bundle":{"commonSourceDirectory":"..","sourceFiles":["../Source/Main.ts","../Source/Background.ts","../Source/Characters.ts","../Source/Introduction.ts","../Source/Scene.ts"],"js":{"sections":[{"pos":0,"end":13,"kind":"prologue","data":"use strict"},{"pos":15,"end":2922,"kind":"text"}],"sources":{"prologues":[{"file":0,"text":"","directives":[{"pos":-1,"end":-1,"expression":{"pos":-1,"end":-1,"text":"use strict"}}]}]}},"dts":{"sections":[{"pos":0,"end":835,"kind":"text"}]}},"version":"4.4.4"}
+{
+  "bundle": {
+    "commonSourceDirectory": "..",
+    "sourceFiles": [
+      "../Source/Main.ts",
+      "../Source/Background.ts",
+      "../Source/Characters.ts",
+      "../Source/Introduction.ts",
+      "../Source/Scene.ts"
+    ],
+    "js": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 13,
+          "kind": "prologue",
+          "data": "use strict"
+        },
+        {
+          "pos": 15,
+          "end": 5950,
+          "kind": "text"
+        }
+      ],
+      "sources": {
+        "prologues": [
+          {
+            "file": 0,
+            "text": "",
+            "directives": [
+              {
+                "pos": -1,
+                "end": -1,
+                "expression": {
+                  "pos": -1,
+                  "end": -1,
+                  "text": "use strict"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "dts": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 866,
+          "kind": "text"
+        }
+      ]
+    }
+  },
+  "version": "3.8.3"
+}

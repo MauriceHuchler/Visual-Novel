@@ -26,6 +26,7 @@ declare namespace Template {
                 T002: string;
                 T003: string;
                 T004: string;
+                T005: string;
             };
         };
     };
