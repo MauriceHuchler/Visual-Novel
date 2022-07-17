@@ -7,7 +7,8 @@ namespace Template {
   export let dataForSave = {
     protagonist: {
       name: "",
-      furor: 0
+      furor: 0,
+      dinaLovesYou: true
     }
   }
   window.addEventListener("load", start);
@@ -19,7 +20,10 @@ namespace Template {
     let scenes: ƒS.Scenes = [
       { scene: intro, name: "intro", id: "intro" },
       { scene: morgen, name: "morgen", id: "morgen" },
-      { scene: arbeit, name: "arbeit", id: "arbeit" }
+      { scene: arbeit, name: "arbeit", id: "arbeit" },
+      { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
+      { scene: alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
+      { scene: zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" }
     ];
     // start the sequence
     ƒS.Progress.go(scenes);

@@ -7,7 +7,8 @@ var Template;
     Template.dataForSave = {
         protagonist: {
             name: "",
-            furor: 0
+            furor: 0,
+            dinaLovesYou: true
         }
     };
     window.addEventListener("load", start);
@@ -16,7 +17,10 @@ var Template;
         let scenes = [
             { scene: Template.intro, name: "intro", id: "intro" },
             { scene: Template.morgen, name: "morgen", id: "morgen" },
-            { scene: Template.arbeit, name: "arbeit", id: "arbeit" }
+            { scene: Template.arbeit, name: "arbeit", id: "arbeit" },
+            { scene: Template.dinasHaus, name: "dinasHaus", id: "dinasHaus" },
+            { scene: Template.alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
+            { scene: Template.zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" }
         ];
         // start the sequence
         Template.ƒS.Progress.go(scenes);
@@ -35,6 +39,28 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die Tür fliegt auf und " + Template.dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
         await Template.ƒS.Speech.tell(Template.char.Donald.name, Template.dataForSave.protagonist.name.toLocaleUpperCase());
         await Template.ƒS.Speech.tell(Template.char.Donald.name, "WIR HABEN EIN GROßES PROBLEM!!!!");
+        await Template.ƒS.Speech.tell(Template.char.Donald.name, "WENN WIR NICHT BALD FOSSILE BRENNSTOFFE GIBT");
+        await Template.ƒS.Speech.tell(Template.char.Donald.name, "DANN GEHEN UNS DIE RESERVEN AUS UND WIR KÖNNEN NICHTMEHR LIEFERN");
+        await Template.ƒS.Speech.tell(Template.char.Donald.name, "DAS SCHLIMMSTE IST, ICH GEHE PLEITE!");
+        let bossDecision = {
+            aufregen: "ihm mitteilen, dass er deine ganze Arbeit durcheinander gebracht hat und er Schuld daran ist",
+            entspannt: "versuchen zu erklären, dass es vielleicht falsch berechnet wurde."
+        };
+        let bossDecisionElement = await Template.ƒS.Menu.getInput(bossDecision, "button");
+        switch (bossDecisionElement) {
+            case bossDecision.aufregen:
+                Template.dataForSave.protagonist.furor += 1;
+                break;
+            case bossDecision.entspannt:
+                Template.dataForSave.protagonist.furor -= 1;
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Donald lässt dich nicht ausreden und unterbicht dich mitten in deinem Satz mit:");
+        await Template.ƒS.Speech.tell(Template.char.Donald.name, "SIE HABEN EINE WOCHE ZEIT!");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "setzt seine/ihre Arbeit fort.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "aus unerklärlichen Gründen hat er/sie es trotzdem noch geschafft seine Arbeit innerhalb der Arbeitszeit auszuführen und verlässt pünktlich die Arbeit.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " steigt in sein/ihr Auto und fährt los um " + Template.char.Dina.name + " abzuholen.");
+        return "dinasHaus";
     }
     Template.arbeit = arbeit;
 })(Template || (Template = {}));
@@ -93,6 +119,47 @@ var Template;
             }
         }
     };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function dinasHaus() {
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina sieht man schon von weitem.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "ihr wunderschöner langer Hals kann man sehr schön erkennen");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ihre wundervollen rundlich geformten Beine und der lange Schwanz lassen Sie von den anderen Artgenossen abheben.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Anfänglich denkt Name, dass Dina früher doch noch größer war");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Je näher Name aber an Dina herankommt fällt dir auf wie Sie stetig wächst und wächst und immer größer wird.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Angekommen bei Dina, zeigt sich ihre wahre Größe.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Namens Nacken tut leicht wenn er/sie versucht ihr in die Augen zu schauen.");
+        await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.ƒS.positionPercent(80, 100));
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Hi Schatz!");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Danke dass du mich abholst!");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "aber sag mal...");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Du weißt dass ich ein Brachiosaurus bin.. und dadurch auch größere Sachen gewohnt bist.");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "ich glaube nicht, dass ich ins Auto passe.");
+        let dinaDecision = {
+            aufregen: "Mit Dina einen Streit anfangen und dich über deinen Tag beschweren.",
+            entspannt: "Fehler eingestehen und zusammen nach einer Lösung suchen."
+        };
+        let dinaDecisionElement = await Template.ƒS.Menu.getInput(dinaDecision, "button");
+        switch (dinaDecisionElement) {
+            case dinaDecision.aufregen:
+                Template.dataForSave.protagonist.dinaLovesYou = false;
+                Template.dataForSave.protagonist.furor += 1;
+                //TODO: Dina angry einblenden
+                await Template.ƒS.Speech.tell(Template.char.Dina.name, "weißt Du was? Ich mach das nichtmehr mit!");
+                await Template.ƒS.Speech.tell(Template.char.Dina.name, "immer gehts nur um dich und deine Probleme!");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina dreht wieder um und geht zurück ins Haus.");
+                Template.ƒS.Character.hideAll();
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Immernoch leicht wütend aber auch leicht traurig macht sich " + Template.dataForSave.protagonist.name + " auf den Weg zum Kino.");
+                return "alleinAbHaus";
+            case dinaDecision.entspannt:
+                Template.dataForSave.protagonist.furor -= 1;
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " und Dina unterhalten sich und versuchen eine Lösung für das ganze Problem zu finden.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die beiden kommen auf die Lösung zusammen zum Kino zu laufen und machen sich auf den Weg.");
+                return "zusammenZumKino";
+        }
+    }
+    Template.dinasHaus = dinasHaus;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -205,5 +272,17 @@ var Template;
         console.log("FudgeStory Template Scene starting");
     }
     Template.Scene = Scene;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function alleinAbHaus() {
+    }
+    Template.alleinAbHaus = alleinAbHaus;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function zusammenZumKino() {
+    }
+    Template.zusammenZumKino = zusammenZumKino;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

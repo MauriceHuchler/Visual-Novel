@@ -5,6 +5,7 @@ declare namespace Template {
         protagonist: {
             name: string;
             furor: number;
+            dinaLovesYou: boolean;
         };
     };
 }
@@ -66,6 +67,9 @@ declare namespace Template {
     };
 }
 declare namespace Template {
+    function dinasHaus(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function intro(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -73,4 +77,10 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function alleinAbHaus(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function zusammenZumKino(): Template.ƒS.SceneReturn;
 }
