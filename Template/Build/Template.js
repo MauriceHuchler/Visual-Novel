@@ -282,6 +282,36 @@ var Template;
 var Template;
 (function (Template) {
     async function zusammenZumKino() {
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "durch die ganze Sache hat sich alles verzögert, sodass sie nichtmehr in den Film gelassen werden, da dieser schon angefangen hat.");
+        let kinoDecision = {
+            aufgeregt: "Mit Dina einen Streit anfangen und sich über den Tag beschweren",
+            entspannt: "Ruhig bleiben und vorschlagen direkt etwas essen zu gehen."
+        };
+        let kinoDecisionElement = await Template.ƒS.Menu.getInput(kinoDecision, "button");
+        switch (kinoDecisionElement) {
+            case kinoDecision.aufgeregt:
+                Template.dataForSave.protagonist.furor += 1;
+                Template.dataForSave.protagonist.dinaLovesYou = false;
+                //TODO: Diana einblenden
+                await Template.ƒS.Speech.tell(Template.char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
+                await Template.ƒS.Speech.tell(Template.char.Dina.name, "Immer geht es nur um dich und deine Probleme.");
+                //TODO: diana ausblenden
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.char.Dina.name + " lässt " + Template.dataForSave.protagonist.name + " alleine zurück und macht sich auf den Heimweg.");
+                return "alleinEssen";
+            case kinoDecision.entspannt:
+                Template.dataForSave.protagonist.furor -= 1;
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
     }
     Template.zusammenZumKino = zusammenZumKino;
 })(Template || (Template = {}));
