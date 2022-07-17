@@ -20,7 +20,8 @@ var Template;
             { scene: Template.arbeit, name: "arbeit", id: "arbeit" },
             { scene: Template.dinasHaus, name: "dinasHaus", id: "dinasHaus" },
             { scene: Template.alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
-            { scene: Template.zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" }
+            { scene: Template.zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
+            { scene: Template.alleinEssen, name: "alleinEssen", id: "alleinEssen" }
         ];
         // start the sequence
         Template.ƒS.Progress.go(scenes);
@@ -278,6 +279,12 @@ var Template;
     async function alleinAbHaus() {
     }
     Template.alleinAbHaus = alleinAbHaus;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function alleinEssen() {
+    }
+    Template.alleinEssen = alleinEssen;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {

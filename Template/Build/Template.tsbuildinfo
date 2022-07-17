@@ -11,6 +11,7 @@
       "../Source/Morgen.ts",
       "../Source/Scene.ts",
       "../Source/alleinAbHaus.ts",
+      "../Source/alleinEssen.ts",
       "../Source/zusammenZumKino.ts"
     ],
     "js": {
@@ -23,7 +24,7 @@
         },
         {
           "pos": 15,
-          "end": 19577,
+          "end": 19820,
           "kind": "text"
         }
       ],
@@ -51,7 +52,7 @@
       "sections": [
         {
           "pos": 0,
-          "end": 2029,
+          "end": 2106,
           "kind": "text"
         }
       ]

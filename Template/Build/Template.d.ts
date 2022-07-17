@@ -82,5 +82,8 @@ declare namespace Template {
     function alleinAbHaus(): ƒS.SceneReturn;
 }
 declare namespace Template {
+    function alleinEssen(): Promise<void>;
+}
+declare namespace Template {
     function zusammenZumKino(): Template.ƒS.SceneReturn;
 }

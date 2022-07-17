@@ -23,7 +23,8 @@ namespace Template {
       { scene: arbeit, name: "arbeit", id: "arbeit" },
       { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
       { scene: alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
-      { scene: zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" }
+      { scene: zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
+      { scene: alleinEssen, name: "alleinEssen", id: "alleinEssen" }
     ];
     // start the sequence
     ƒS.Progress.go(scenes);
