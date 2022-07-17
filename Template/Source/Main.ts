@@ -24,7 +24,11 @@ namespace Template {
       { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
       { scene: alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
       { scene: zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
-      { scene: alleinEssen, name: "alleinEssen", id: "alleinEssen" }
+      { scene: alleinEssen, name: "alleinEssen", id: "alleinEssen" },
+      { scene: introEnde, name: "introEnde", id: "introEnde" },
+      { scene: endeGut, name: "endeGut", id: "endeGut" },
+      { scene: endeNeutral, name: "endeNeutral", id: "endeNeutral" },
+      { scene: endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" }
     ];
     // start the sequence
     ƒS.Progress.go(scenes);

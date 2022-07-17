@@ -31,6 +31,7 @@ namespace Template {
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina dreht wieder um und geht zurück ins Haus.");
                 Template.ƒS.Character.hideAll();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Immernoch leicht wütend aber auch leicht traurig macht sich " + dataForSave.protagonist.name + " auf den Weg zum Kino.");
+                await Template.ƒS.Speech.tell(char.Erzahler.name, "vielleicht kann der Film ihn/sie ein bisschen ablenken.");
                 return "alleinAbHaus";
             case dinaDecision.entspannt:
                 dataForSave.protagonist.furor -= 1;

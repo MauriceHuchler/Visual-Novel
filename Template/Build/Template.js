@@ -21,7 +21,11 @@ var Template;
             { scene: Template.dinasHaus, name: "dinasHaus", id: "dinasHaus" },
             { scene: Template.alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
             { scene: Template.zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
-            { scene: Template.alleinEssen, name: "alleinEssen", id: "alleinEssen" }
+            { scene: Template.alleinEssen, name: "alleinEssen", id: "alleinEssen" },
+            { scene: Template.introEnde, name: "introEnde", id: "introEnde" },
+            { scene: endeGut, name: "endeGut", id: "endeGut" },
+            { scene: endeNeutral, name: "endeNeutral", id: "endeNeutral" },
+            { scene: endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" }
         ];
         // start the sequence
         Template.ƒS.Progress.go(scenes);
@@ -152,6 +156,7 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina dreht wieder um und geht zurück ins Haus.");
                 Template.ƒS.Character.hideAll();
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Immernoch leicht wütend aber auch leicht traurig macht sich " + Template.dataForSave.protagonist.name + " auf den Weg zum Kino.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vielleicht kann der Film ihn/sie ein bisschen ablenken.");
                 return "alleinAbHaus";
             case dinaDecision.entspannt:
                 Template.dataForSave.protagonist.furor -= 1;
@@ -277,14 +282,38 @@ var Template;
 var Template;
 (function (Template) {
     async function alleinAbHaus() {
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Der Film war schlecht.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name);
+        return "alleinEssen";
     }
     Template.alleinAbHaus = alleinAbHaus;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
     async function alleinEssen() {
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " hat jetzt keine Lust mehr auf das vegane Restaurant");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " er/sie brauchen was richtiges zwischen den Zähnen");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "irgendwas mit Biss und nicht essen für Herbi-Erbis");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " was auch immer " + Template.dataForSave.protagonist.name + " mit diesem Schimpfwort meint.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " doch plötzlich schreckt " + Template.dataForSave.protagonist.name + " auf.");
+        return "introEnde";
     }
     Template.alleinEssen = alleinEssen;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function introEnde() {
+        if (Template.dataForSave.protagonist.furor > 4) {
+            return "endeSchlecht";
+        }
+        if (Template.dataForSave.protagonist.furor < -3) {
+            return "endeGut";
+        }
+        if (Template.dataForSave.protagonist.furor >= -3 && Template.dataForSave.protagonist.furor <= 3) {
+            return "endeNeutral";
+        }
+    }
+    Template.introEnde = introEnde;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -300,10 +329,11 @@ var Template;
             case kinoDecision.aufgeregt:
                 Template.dataForSave.protagonist.furor += 1;
                 Template.dataForSave.protagonist.dinaLovesYou = false;
-                //TODO: Diana einblenden
+                //TODO: Dina einblenden
+                await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.ƒS.positionPercent());
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Immer geht es nur um dich und deine Probleme.");
-                //TODO: diana ausblenden
+                //TODO: dina ausblenden
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.char.Dina.name + " lässt " + Template.dataForSave.protagonist.name + " alleine zurück und macht sich auf den Heimweg.");
                 return "alleinEssen";
             case kinoDecision.entspannt:
