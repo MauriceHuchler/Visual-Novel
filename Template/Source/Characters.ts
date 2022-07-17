@@ -9,6 +9,22 @@ namespace Template {
                 T004: "Gut, da du nun zufrieden bist, geht es los!",
                 T005: dataForSave.protagonist.name
             }
+        },
+        Protagonist: {
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: "",
+                angry: "",
+                relaxed: ""
+            }
+        },
+        Dina: {
+            name: "Dina",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: "",
+                angry: ""
+            }
         }
     }
 }

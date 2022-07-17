@@ -14,11 +14,22 @@ var Template;
     function start(_event) {
         Template.ƒS.Speech.hide();
         let scenes = [
-            { scene: Template.intro, name: "intro", id: "intro" }
+            { scene: Template.intro, name: "intro", id: "intro" },
+            { scene: Template.morgen, name: "morgen", id: "morgen" },
+            { scene: Template.arbeit, name: "arbeit", id: "arbeit" }
         ];
         // start the sequence
         Template.ƒS.Progress.go(scenes);
     }
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function arbeit() {
+        await Template.ƒS.Location.show(Template.bg.bad);
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "asdasd");
+    }
+    Template.arbeit = arbeit;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -27,6 +38,14 @@ var Template;
             name: "schlafzimmer",
             background: "./Images/bg2.png",
             foreground: ""
+        },
+        bad: {
+            name: "bad",
+            background: "./Images/bg2.png"
+        },
+        arbeit: {
+            name: "arbeit",
+            background: "./Images/bg2.png"
         }
     };
 })(Template || (Template = {}));
@@ -41,6 +60,22 @@ var Template;
                 T003: "Wie lautet dein Name?",
                 T004: "Gut, da du nun zufrieden bist, geht es los!",
                 T005: Template.dataForSave.protagonist.name
+            }
+        },
+        Protagonist: {
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: "",
+                angry: "",
+                relaxed: ""
+            }
+        },
+        Dina: {
+            name: "Dina",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: "",
+                angry: ""
             }
         }
     };
@@ -73,6 +108,16 @@ var Template;
             default:
                 break;
         }
+        Template.ƒS.Character.hideAll();
+        return "morgen";
+    }
+    Template.intro = intro;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function morgen() {
+        await Template.ƒS.Location.show(Template.bg.bad);
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " wacht an einem wunderschönen Tag auf.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "reckt und streckt sich und gähnt einmal ganz laut.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein ganz normaler Tag für " + Template.dataForSave.protagonist.name + ".");
@@ -96,20 +141,49 @@ var Template;
                 Template.dataForSave.protagonist.furor -= 1;
                 break;
         }
+        Template.ƒS.Speech.clear();
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " kämmt und kämmt sich die Haare");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "doch die paar vereinzelten Haare wollen heute einfach nicht so.");
-        let kammDecision;
+        await Template.ƒS.update(1);
+        let kammDecision = {
+            aufregen2: "Kamm in den Müll schmeißen.",
+            entspannt2: "eine Mütze aufziehen."
+        };
         let kammDecisionElement = await Template.ƒS.Menu.getInput(kammDecision, "button");
         switch (kammDecisionElement) {
-            case kammDecision.aufregen:
+            case kammDecision.aufregen2:
                 Template.dataForSave.protagonist.furor += 1;
                 break;
-            case kammDecision.entspannt:
+            case kammDecision.entspannt2:
                 Template.dataForSave.protagonist.furor -= 1;
                 break;
         }
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Naja denkt sich" + Template.dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*brrr* *brrrr*");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "s' Handy klingelt. Es ist Dina.");
+        await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.ƒS.positionPercent(80, 100));
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Hey Süßer/Süße, na wie war dein Tag?");
+        let tagDecision = {
+            aufregen: "über den bisherigen Tag beschweren",
+            entspannt: "in ruhiger Stimme erklären, dass es schon bessere Tage gegeben hat und es nicht dein Tag ist."
+        };
+        let tagDecisionElement = await Template.ƒS.Menu.getInput(tagDecision, "button");
+        switch (tagDecisionElement) {
+            case tagDecision.aufregen:
+                Template.dataForSave.protagonist.furor += 1;
+                break;
+            case tagDecision.entspannt:
+                Template.dataForSave.protagonist.furor -= 1;
+                break;
+        }
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Oh, das Tut mir Leid! Ich würde gern was gutes tun.");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Ich freue mich auf heute Aebnd. Ich hab uns extra ein tolles Restaurant rausgesucht, da gibt es leckeres Essen.");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Ich hab dich lieb und wünsche Dir noch einen schönen Arbeitstag, wir sehen uns heute Abend!");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " legt auf und setzt sich in sein/ihr Auto und fährt zur Arbeit");
+        Template.ƒS.Character.hideAll();
+        return "arbeit";
     }
-    Template.intro = intro;
+    Template.morgen = morgen;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {

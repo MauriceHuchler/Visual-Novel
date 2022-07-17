@@ -17,7 +17,9 @@ namespace Template {
 
     ƒS.Speech.hide();
     let scenes: ƒS.Scenes = [
-      { scene: intro, name: "intro", id: "intro" }
+      { scene: intro, name: "intro", id: "intro" },
+      { scene: morgen, name: "morgen", id: "morgen" },
+      { scene: arbeit, name: "arbeit", id: "arbeit" }
     ];
     // start the sequence
     ƒS.Progress.go(scenes);

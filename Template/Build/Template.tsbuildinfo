@@ -3,9 +3,11 @@
     "commonSourceDirectory": "..",
     "sourceFiles": [
       "../Source/Main.ts",
+      "../Source/Arbeit.ts",
       "../Source/Background.ts",
       "../Source/Characters.ts",
       "../Source/Introduction.ts",
+      "../Source/Morgen.ts",
       "../Source/Scene.ts"
     ],
     "js": {
@@ -18,7 +20,7 @@
         },
         {
           "pos": 15,
-          "end": 5950,
+          "end": 9506,
           "kind": "text"
         }
       ],
@@ -46,7 +48,7 @@
       "sections": [
         {
           "pos": 0,
-          "end": 866,
+          "end": 1587,
           "kind": "text"
         }
       ]
