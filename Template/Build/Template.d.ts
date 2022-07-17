@@ -56,6 +56,13 @@ declare namespace Template {
                 angry: string;
             };
         };
+        Donald: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                angry: string;
+            };
+        };
     };
 }
 declare namespace Template {

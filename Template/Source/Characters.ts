@@ -25,6 +25,13 @@ namespace Template {
                 normal: "",
                 angry: ""
             }
+        },
+        Donald: {
+            name: "Donald",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                angry: ""
+            }
         }
     }
 }

@@ -27,7 +27,14 @@ var Template;
     async function arbeit() {
         await Template.ƒS.Location.show(Template.bg.bad);
         await Template.ƒS.update(0.5);
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "asdasd");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "sitz in sienem/ihrem Büro an einem Schreibtisch");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und sortiert einige lose Blätter die ünber die Wochen liegen geblieben sind.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dadurch wirbeln all deine sorgfältig sortierten Blätter auf und flattern durch die Luft.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die Tür fliegt auf und " + Template.dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
+        await Template.ƒS.Speech.tell(Template.char.Donald.name, Template.dataForSave.protagonist.name.toLocaleUpperCase());
+        await Template.ƒS.Speech.tell(Template.char.Donald.name, "WIR HABEN EIN GROßES PROBLEM!!!!");
     }
     Template.arbeit = arbeit;
 })(Template || (Template = {}));
@@ -75,6 +82,13 @@ var Template;
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 normal: "",
+                angry: ""
+            }
+        },
+        Donald: {
+            name: "Donald",
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
                 angry: ""
             }
         }
