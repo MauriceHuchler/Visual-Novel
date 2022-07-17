@@ -23,9 +23,9 @@ var Template;
             { scene: Template.zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
             { scene: Template.alleinEssen, name: "alleinEssen", id: "alleinEssen" },
             { scene: Template.introEnde, name: "introEnde", id: "introEnde" },
-            { scene: endeGut, name: "endeGut", id: "endeGut" },
-            { scene: endeNeutral, name: "endeNeutral", id: "endeNeutral" },
-            { scene: endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" }
+            { scene: Template.endeGut, name: "endeGut", id: "endeGut" },
+            { scene: Template.endeNeutral, name: "endeNeutral", id: "endeNeutral" },
+            { scene: Template.endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" }
         ];
         // start the sequence
         Template.ƒS.Progress.go(scenes);
@@ -283,7 +283,7 @@ var Template;
 (function (Template) {
     async function alleinAbHaus() {
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Der Film war schlecht.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name);
+        // await Template.ƒS.Speech.tell(char.Erzahler.name,)
         return "alleinEssen";
     }
     Template.alleinAbHaus = alleinAbHaus;
@@ -299,6 +299,24 @@ var Template;
         return "introEnde";
     }
     Template.alleinEssen = alleinEssen;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function endeGut() {
+    }
+    Template.endeGut = endeGut;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function endeNeutral() {
+    }
+    Template.endeNeutral = endeNeutral;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function endeSchlecht() {
+    }
+    Template.endeSchlecht = endeSchlecht;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -330,7 +348,7 @@ var Template;
                 Template.dataForSave.protagonist.furor += 1;
                 Template.dataForSave.protagonist.dinaLovesYou = false;
                 //TODO: Dina einblenden
-                await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.ƒS.positionPercent());
+                // await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent())
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Immer geht es nur um dich und deine Probleme.");
                 //TODO: dina ausblenden

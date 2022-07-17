@@ -14,7 +14,7 @@ namespace Template {
                 dataForSave.protagonist.furor += 1;
                 dataForSave.protagonist.dinaLovesYou = false;
                 //TODO: Dina einblenden
-                await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent())
+                // await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent())
                 await Template.ƒS.Speech.tell(char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(char.Dina.name, "Immer geht es nur um dich und deine Probleme.");
                 //TODO: dina ausblenden

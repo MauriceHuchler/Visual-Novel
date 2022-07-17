@@ -85,6 +85,15 @@ declare namespace Template {
     function alleinEssen(): Promise<string>;
 }
 declare namespace Template {
+    function endeGut(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function endeNeutral(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function endeSchlecht(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function introEnde(): Template.ƒS.SceneReturn;
 }
 declare namespace Template {
