@@ -1,5 +1,6 @@
 namespace Template {
-    export async function morgen(): ƒS.SceneReturn {
+    export async function morgen(): ƒS.
+        SceneReturn {
         await ƒS.Location.show(bg.bad);
         await ƒS.update(0.5);
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " wacht an einem wunderschönen Tag auf.");
@@ -9,6 +10,8 @@ namespace Template {
         await ƒS.Speech.tell(char.Erzahler.name, "So macht " + dataForSave.protagonist.name + " sich auf den Weg um sein/ihr morgentliches Ritual zu beginnen.");
         await ƒS.Speech.tell(char.Erzahler.name, "Ganz klassisch fängt er/sie mit dem Zähneputzen an");
         await ƒS.Speech.tell(char.Erzahler.name, "*schrub* *schrub* *schrub*");
+        ƒS.Sound.fade(sounds.krack, 0.5, 0, false);
+        await ƒS.update(2);
         await ƒS.Speech.tell(char.Erzahler.name, "*krack*");
         await ƒS.Speech.tell(char.Erzahler.name, "Da scheint " + dataForSave.protagonist.name + " wohl zu viel Druck auf seiner Zahnbürste gehabt zu haben und diese ist abgebrochen.");
 
@@ -54,10 +57,11 @@ namespace Template {
                 break;
         }
 
-        await ƒS.Speech.tell(char.Erzahler.name, "Naja denkt sich" + dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
+        await ƒS.Speech.tell(char.Erzahler.name, "Naja denkt sich " + dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
         await ƒS.Speech.tell(char.Erzahler.name, "*brrr* *brrrr*");
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + "s' Handy klingelt. Es ist Dina.");
-        await ƒS.Character.show(char.Dina, char.Dina.pose.normal, Template.ƒS.positionPercent(80, 100));
+        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await ƒS.update(0.5);
         await ƒS.Speech.tell(char.Erzahler.name, "Hey Süßer/Süße, na wie war dein Tag?");
 
         let tagDecision = {

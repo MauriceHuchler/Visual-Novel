@@ -8,6 +8,10 @@ namespace Template {
                 T003: "Wie lautet dein Name?",
                 T004: "Gut, da du nun zufrieden bist, geht es los!",
                 T005: dataForSave.protagonist.name
+            },
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: "./Images/characters/erzahlerTest.png",
             }
         },
         Protagonist: {
@@ -22,7 +26,7 @@ namespace Template {
             name: "Dina",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                normal: "",
+                normal: "./Images/characters/erzahlerTest.png",
                 angry: ""
             }
         },

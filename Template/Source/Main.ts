@@ -11,14 +11,23 @@ namespace Template {
       dinaLovesYou: true
     }
   }
+
+  let gameMenu: ƒS.Menu;
+  let inGameMenu = {
+    soundUp: "+",
+    soundDown: "-",
+    save: "Save",
+    load: "Load",
+    close: "Close"
+  };
+  let menu: boolean = false;
   window.addEventListener("load", start);
-
-
   function start(_event: Event): void {
-
+    gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
+    gameMenu.close();
     ƒS.Speech.hide();
     let scenes: ƒS.Scenes = [
-      { scene: intro, name: "intro", id: "intro" },
+      // { scene: intro, name: "intro", id: "intro" },
       { scene: morgen, name: "morgen", id: "morgen" },
       { scene: arbeit, name: "arbeit", id: "arbeit" },
       { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
@@ -32,5 +41,39 @@ namespace Template {
     ];
     // start the sequence
     ƒS.Progress.go(scenes);
+  }
+
+  document.addEventListener("keydown", hndKeyPress);
+
+  async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+    switch (_event.code) {
+      case ƒ.KEYBOARD_CODE.F8:
+        console.log("game is saved");
+        await ƒS.Progress.save();
+        break;
+      case ƒ.KEYBOARD_CODE.F9:
+        await ƒS.Progress.load();
+        console.log("load sucesfully");
+        break;
+    }
+
+  }
+
+  
+  async function buttonFunctionalities(_option: string): Promise<void> {
+    switch (_option) {
+      case inGameMenu.save:
+        await ƒS.Progress.save();
+        break;
+      case inGameMenu.load:
+        await ƒS.Progress.load();
+        break;
+      case inGameMenu.close:
+        gameMenu.close();
+        menu = false;
+        break;
+    }
+
+
   }
 }

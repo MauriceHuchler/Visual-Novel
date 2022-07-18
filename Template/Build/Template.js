@@ -11,11 +11,22 @@ var Template;
             dinaLovesYou: true
         }
     };
+    let gameMenu;
+    let inGameMenu = {
+        soundUp: "+",
+        soundDown: "-",
+        save: "Save",
+        load: "Load",
+        close: "Close"
+    };
+    let menu = false;
     window.addEventListener("load", start);
     function start(_event) {
+        gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
+        gameMenu.close();
         Template.ƒS.Speech.hide();
         let scenes = [
-            { scene: Template.intro, name: "intro", id: "intro" },
+            // { scene: intro, name: "intro", id: "intro" },
             { scene: Template.morgen, name: "morgen", id: "morgen" },
             { scene: Template.arbeit, name: "arbeit", id: "arbeit" },
             { scene: Template.dinasHaus, name: "dinasHaus", id: "dinasHaus" },
@@ -30,14 +41,42 @@ var Template;
         // start the sequence
         Template.ƒS.Progress.go(scenes);
     }
+    document.addEventListener("keydown", hndKeyPress);
+    async function hndKeyPress(_event) {
+        switch (_event.code) {
+            case Template.ƒ.KEYBOARD_CODE.F8:
+                console.log("game is saved");
+                await Template.ƒS.Progress.save();
+                break;
+            case Template.ƒ.KEYBOARD_CODE.F9:
+                await Template.ƒS.Progress.load();
+                console.log("load sucesfully");
+                break;
+        }
+    }
+    async function buttonFunctionalities(_option) {
+        switch (_option) {
+            case inGameMenu.save:
+                await Template.ƒS.Progress.save();
+                break;
+            case inGameMenu.load:
+                await Template.ƒS.Progress.load();
+                break;
+            case inGameMenu.close:
+                gameMenu.close();
+                menu = false;
+                break;
+        }
+    }
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
     async function arbeit() {
         await Template.ƒS.Location.show(Template.bg.bad);
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "sitz in sienem/ihrem Büro an einem Schreibtisch");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " sitz in seinem/ihrem Büro an einem Schreibtisch");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und sortiert einige lose Blätter die ünber die Wochen liegen geblieben sind.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dadurch wirbeln all deine sorgfältig sortierten Blätter auf und flattern durch die Luft.");
@@ -74,16 +113,20 @@ var Template;
     Template.bg = {
         schlafzimmer: {
             name: "schlafzimmer",
-            background: "./Images/bg2.png",
+            background: "./Images/backgrounds/schlafzimmerFarbe.png",
             foreground: ""
         },
         bad: {
             name: "bad",
-            background: "./Images/bg2.png"
+            background: "./Images/backgrounds/badSW.png"
         },
         arbeit: {
             name: "arbeit",
-            background: "./Images/bg2.png"
+            background: "./Images/backgrounds/badSW.png"
+        },
+        kino: {
+            name: "kino",
+            background: "./Images/backgrounds/badSW.png"
         }
     };
 })(Template || (Template = {}));
@@ -98,6 +141,10 @@ var Template;
                 T003: "Wie lautet dein Name?",
                 T004: "Gut, da du nun zufrieden bist, geht es los!",
                 T005: Template.dataForSave.protagonist.name
+            },
+            origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: "./Images/characters/erzahlerTest.png",
             }
         },
         Protagonist: {
@@ -112,7 +159,7 @@ var Template;
             name: "Dina",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                normal: "",
+                normal: "./Images/characters/erzahlerTest.png",
                 angry: ""
             }
         },
@@ -124,6 +171,22 @@ var Template;
             }
         }
     };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
+    async function credits() {
+        let pages = "<h1>The End</h1> \
+            <h2>und was lernen wir daraus? </h2> \
+            <h3>Bleib ruhig und entspannt und dann ist dein Tag gerettet</h3> \
+            <h2>Copyrights</h2> \
+            <p>Story: Maurice Huchler</p> \
+            <p>Backgrounds: Maurice Huchler</p> \
+            <p>Characters: Maurice Huchler</p> \
+        <p>Sounds: pixabay.com</p>";
+        Template.ƒS.Text.setClass("credits");
+        Template.ƒS.Text.print(pages);
+    }
+    Template.credits = credits;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -170,7 +233,11 @@ var Template;
 var Template;
 (function (Template) {
     async function intro() {
+        Template.ƒS.Sound.fade(Template.sounds.jungle, 0.5, 1, true);
+        await Template.ƒS.update(1);
         await Template.ƒS.Location.show(Template.bg.schlafzimmer);
+        await Template.ƒS.update(0.5);
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.char.Erzahler.text.T001);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.char.Erzahler.text.T002);
@@ -195,7 +262,6 @@ var Template;
             default:
                 break;
         }
-        Template.ƒS.Character.hideAll();
         return "morgen";
     }
     Template.intro = intro;
@@ -212,6 +278,8 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "So macht " + Template.dataForSave.protagonist.name + " sich auf den Weg um sein/ihr morgentliches Ritual zu beginnen.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ganz klassisch fängt er/sie mit dem Zähneputzen an");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*schrub* *schrub* *schrub*");
+        Template.ƒS.Sound.fade(Template.sounds.krack, 0.5, 0, false);
+        await Template.ƒS.update(2);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*krack*");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Da scheint " + Template.dataForSave.protagonist.name + " wohl zu viel Druck auf seiner Zahnbürste gehabt zu haben und diese ist abgebrochen.");
         let zahnbuersteDecision = {
@@ -245,10 +313,11 @@ var Template;
                 Template.dataForSave.protagonist.furor -= 1;
                 break;
         }
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Naja denkt sich" + Template.dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Naja denkt sich " + Template.dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*brrr* *brrrr*");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "s' Handy klingelt. Es ist Dina.");
-        await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.ƒS.positionPercent(80, 100));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Hey Süßer/Süße, na wie war dein Tag?");
         let tagDecision = {
             aufregen: "über den bisherigen Tag beschweren",
@@ -281,9 +350,20 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
+    Template.sounds = {
+        jungle: "./Sounds/jungle.mp3",
+        krack: "./Sounds/krack.mp3"
+    };
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
     async function alleinAbHaus() {
+        await Template.ƒS.Location.show(Template.bg.kino);
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Der Film war schlecht.");
-        // await Template.ƒS.Speech.tell(char.Erzahler.name,)
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "wieder nur so ein Actionfilm, indem die Erde droht zu explodieren, weil ein riesiger komet auf die Erde zurast.");
+        await Template.ƒS.Character.hideAll();
         return "alleinEssen";
     }
     Template.alleinAbHaus = alleinAbHaus;
@@ -321,6 +401,9 @@ var Template;
 var Template;
 (function (Template) {
     async function introEnde() {
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als " + Template.dataForSave.protagonist.name + " nach oben blickt kann er/sie seinen Augen kaum glauben...");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Es ist ein riesiger Komet");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "so groß dass selbst " + Template.dataForSave.protagonist.name + ", der/die Probleme mit der Distanz hat ihn als riesig beschreibt");
         if (Template.dataForSave.protagonist.furor > 4) {
             return "endeSchlecht";
         }
@@ -356,17 +439,20 @@ var Template;
                 return "alleinEssen";
             case kinoDecision.entspannt:
                 Template.dataForSave.protagonist.furor -= 1;
-                break;
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina und " + Template.dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Da fällt Name wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "leicht genervt bestellt sich " + Template.dataForSave.protagonist.name + " eine Suppe.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "trotz des anstrengenden Tages haben die beiden einen wunderschönen Abend zusammen und unterhalten sich über viele Dinge");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als die Suppe ankommt und Name eine Schuppe in der Suppe entdeckt");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "lässt er/sie sich nicht davon aufbringen und ist einfach nur froh Dina an seiner/ihrer Seite zu haben.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich sehr lange dauert um Name einen Kuss zu geben");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Kurz bevor die beiden sich Küssen, schrecken beide auf");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "ein ohrenbetäubender Knall ist zu hören");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinauas auf die Straße um nachzuschauen was passiert ist.");
+                return "introEnde";
         }
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
     }
     Template.zusammenZumKino = zusammenZumKino;
 })(Template || (Template = {}));

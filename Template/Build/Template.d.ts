@@ -27,6 +27,10 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        kino: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Template {
@@ -39,6 +43,10 @@ declare namespace Template {
                 T003: string;
                 T004: string;
                 T005: string;
+            };
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                normal: string;
             };
         };
         Protagonist: {
@@ -67,6 +75,9 @@ declare namespace Template {
     };
 }
 declare namespace Template {
+    function credits(): ƒS.SceneReturn;
+}
+declare namespace Template {
     function dinasHaus(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -77,6 +88,12 @@ declare namespace Template {
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    let sounds: {
+        jungle: string;
+        krack: string;
+    };
 }
 declare namespace Template {
     function alleinAbHaus(): ƒS.SceneReturn;
