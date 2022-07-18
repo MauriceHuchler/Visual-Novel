@@ -137,7 +137,7 @@ var Template;
         Erzahler: {
             name: "Erzähler",
             text: {
-                T001: "Bevor die Geschichte starten kann",
+                T001: "Bevor ich dir die Geschichte vorlese",
                 T002: "Muss ich erst von Dir wissen",
                 T003: "Wie lautet dein Name?",
                 T004: "Gut, da du nun zufrieden bist, geht es los!",
