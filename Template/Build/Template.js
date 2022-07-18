@@ -26,7 +26,7 @@ var Template;
         gameMenu.close();
         Template.ƒS.Speech.hide();
         let scenes = [
-            // { scene: intro, name: "intro", id: "intro" },
+            { scene: Template.intro, name: "intro", id: "intro" },
             { scene: Template.morgen, name: "morgen", id: "morgen" },
             { scene: Template.arbeit, name: "arbeit", id: "arbeit" },
             { scene: Template.dinasHaus, name: "dinasHaus", id: "dinasHaus" },
@@ -36,7 +36,8 @@ var Template;
             { scene: Template.introEnde, name: "introEnde", id: "introEnde" },
             { scene: Template.endeGut, name: "endeGut", id: "endeGut" },
             { scene: Template.endeNeutral, name: "endeNeutral", id: "endeNeutral" },
-            { scene: Template.endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" }
+            { scene: Template.endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" },
+            { scene: Template.credits, name: "credits", id: "credits" }
         ];
         // start the sequence
         Template.ƒS.Progress.go(scenes);
@@ -383,18 +384,21 @@ var Template;
 var Template;
 (function (Template) {
     async function endeGut() {
+        return "credits";
     }
     Template.endeGut = endeGut;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
     async function endeNeutral() {
+        return "credits";
     }
     Template.endeNeutral = endeNeutral;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
     async function endeSchlecht() {
+        return "credits";
     }
     Template.endeSchlecht = endeSchlecht;
 })(Template || (Template = {}));

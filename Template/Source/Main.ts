@@ -27,7 +27,7 @@ namespace Template {
     gameMenu.close();
     ƒS.Speech.hide();
     let scenes: ƒS.Scenes = [
-      // { scene: intro, name: "intro", id: "intro" },
+      { scene: intro, name: "intro", id: "intro" },
       { scene: morgen, name: "morgen", id: "morgen" },
       { scene: arbeit, name: "arbeit", id: "arbeit" },
       { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
@@ -37,7 +37,8 @@ namespace Template {
       { scene: introEnde, name: "introEnde", id: "introEnde" },
       { scene: endeGut, name: "endeGut", id: "endeGut" },
       { scene: endeNeutral, name: "endeNeutral", id: "endeNeutral" },
-      { scene: endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" }
+      { scene: endeSchlecht, name: "endeSchlecht", id: "endeSchlecht" },
+      { scene: credits, name: "credits", id: "credits" }
     ];
     // start the sequence
     ƒS.Progress.go(scenes);
@@ -59,7 +60,7 @@ namespace Template {
 
   }
 
-  
+
   async function buttonFunctionalities(_option: string): Promise<void> {
     switch (_option) {
       case inGameMenu.save:
