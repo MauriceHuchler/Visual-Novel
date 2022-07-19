@@ -87,9 +87,6 @@ declare namespace Template {
     function morgen(): ƒS.SceneReturn;
 }
 declare namespace Template {
-    function Scene(): ƒS.SceneReturn;
-}
-declare namespace Template {
     let sounds: {
         jungle: string;
         krack: string;

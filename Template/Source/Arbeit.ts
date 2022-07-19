@@ -10,6 +10,7 @@ namespace Template {
         await ƒS.Speech.tell(char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
         await ƒS.Speech.tell(char.Erzahler.name, "Dadurch wirbeln all deine sorgfältig sortierten Blätter auf und flattern durch die Luft.");
         await ƒS.Speech.tell(char.Erzahler.name, "Die Tür fliegt auf und " + dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
+        //TODO: donald einblenden
         await ƒS.Speech.tell(char.Donald.name, dataForSave.protagonist.name.toLocaleUpperCase());
         await ƒS.Speech.tell(char.Donald.name, "WIR HABEN EIN GROßES PROBLEM!!!!");
         await ƒS.Speech.tell(char.Donald.name, "WENN WIR NICHT BALD FOSSILE BRENNSTOFFE GIBT");

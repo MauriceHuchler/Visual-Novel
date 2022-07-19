@@ -1,13 +1,12 @@
 namespace Template {
-    export async function morgen(): ƒS.
-        SceneReturn {
-        await ƒS.Location.show(bg.bad);
-        await ƒS.update(0.5);
+    export async function morgen(): ƒS.SceneReturn {
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " wacht an einem wunderschönen Tag auf.");
         await ƒS.Speech.tell(char.Erzahler.name, "reckt und streckt sich und gähnt einmal ganz laut.");
         await ƒS.Speech.tell(char.Erzahler.name, "Ein ganz normaler Tag für " + dataForSave.protagonist.name + ".");
         await ƒS.Speech.tell(char.Erzahler.name, "Als T-Rex hat man es nicht immer ganz so einfach im Leben. Die kurzen Arme machen manchmal das Leben ganz schön schwer.");
         await ƒS.Speech.tell(char.Erzahler.name, "So macht " + dataForSave.protagonist.name + " sich auf den Weg um sein/ihr morgentliches Ritual zu beginnen.");
+        await ƒS.Location.show(bg.bad);
+        await ƒS.update(0.5);
         await ƒS.Speech.tell(char.Erzahler.name, "Ganz klassisch fängt er/sie mit dem Zähneputzen an");
         await ƒS.Speech.tell(char.Erzahler.name, "*schrub* *schrub* *schrub*");
         ƒS.Sound.fade(sounds.krack, 0.5, 0, false);
