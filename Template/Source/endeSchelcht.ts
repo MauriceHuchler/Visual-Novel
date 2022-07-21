@@ -5,7 +5,7 @@ namespace Template {
         await Template.ƒS.Speech.tell(char.Erzahler.name, "'jetzt reichts' denkt sich Name" + dataForSave.protagonist.name);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "komplett außer Rand und Band rennt " + dataForSave.protagonist.name + " davon");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "so könne der Tag nicht enden.");
-        //TODO: background = vulkan
+        await Template.ƒS.Location.show(bg.vulkan);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "An einem Vulkan angekommen nennt " + dataForSave.protagonist.name + " ein geheimes Codewort");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "daraufhin öffnet sich eine Schleuse und " + dataForSave.protagonist.name + " verschwindet in das innere des Vulkans");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Von außen hört man lautes rumpeln und poltern ab und zu übertönt durch ein lautes Fluchen");

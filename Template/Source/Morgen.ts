@@ -59,9 +59,9 @@ namespace Template {
         await ƒS.Speech.tell(char.Erzahler.name, "Naja denkt sich " + dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
         await ƒS.Speech.tell(char.Erzahler.name, "*brrr* *brrrr*");
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + "s' Handy klingelt. Es ist Dina.");
-        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(char.Dina, char.Dina.pose.normal, Template.ƒS.positionPercent(87, 95));
         await ƒS.update(0.5);
-        await ƒS.Speech.tell(char.Erzahler.name, "Hey Süßer/Süße, na wie war dein Tag?");
+        await ƒS.Speech.tell(char.Erzahler.name, "Hey Süßer/Süße, gut geschlafen?");
 
         let tagDecision = {
             aufregen: "über den bisherigen Tag beschweren",
@@ -79,10 +79,10 @@ namespace Template {
                 break;
         }
 
-        await ƒS.Speech.tell(char.Dina.name, "Oh, das Tut mir Leid! Ich würde gern was gutes tun.");
-        await ƒS.Speech.tell(char.Dina.name, "Ich freue mich auf heute Aebnd. Ich hab uns extra ein tolles Restaurant rausgesucht, da gibt es leckeres Essen.");
+        await ƒS.Speech.tell(char.Dina.name, "Oh, das Tut mir Leid! Ich würde gern was Gutes tun.");
+        await ƒS.Speech.tell(char.Dina.name, "Ich freue mich auf heute Abend. Ich hab uns extra ein tolles Restaurant rausgesucht, da gibt es leckeres Essen.");
         await ƒS.Speech.tell(char.Dina.name, "Ich hab dich lieb und wünsche Dir noch einen schönen Arbeitstag, wir sehen uns heute Abend!");
-        await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " legt auf und setzt sich in sein/ihr Auto und fährt zur Arbeit");
+        await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " legt auf und setzt sich in das Auto um zur Arbeit zu fahren");
         Template.ƒS.Character.hideAll();
         return "arbeit"
 

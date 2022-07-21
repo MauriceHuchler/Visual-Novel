@@ -7,7 +7,7 @@ namespace Template {
         },
         bad: {
             name: "bad",
-            background: "./Images/backgrounds/badSW.png"
+            background: "./Images/backgrounds/badFarbe.png"
         },
         arbeit: {
             name: "arbeit",
@@ -15,7 +15,15 @@ namespace Template {
         },
         kino: {
             name: "kino",
-            background: "./Images/backgrounds/badSW.png"
+            background: "./Images/backgrounds/kinoFarbe.png"
+        },
+        dinasHaus: {
+            name: "dinasHaus",
+            background: "./Images/backgrounds/dinasHausFarbe.png"
+        },
+        vulkan: {
+            name: "vulkan",
+            background: "./Images/backgrounds/vulkanFabre.png"
         }
     }
 }

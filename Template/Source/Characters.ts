@@ -26,15 +26,15 @@ namespace Template {
             name: "Dina",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                normal: "./Images/characters/erzahlerTest.png",
-                angry: ""
+                normal: "./Images/characters/dinaNormal.png",
+                angry: "./Images/characters/dinaAngry.png"
             }
         },
         Donald: {
             name: "Donald",
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: ""
+                angry: "./Images/characters/donaldAngry.png"
             }
         }
     }

@@ -27,9 +27,9 @@ namespace Template {
     gameMenu.close();
     ƒS.Speech.hide();
     let scenes: ƒS.Scenes = [
-      { scene: intro, name: "intro", id: "intro" },
-      { scene: morgen, name: "morgen", id: "morgen" },
-      { scene: arbeit, name: "arbeit", id: "arbeit" },
+      // { scene: intro, name: "intro", id: "intro" },
+      // { scene: morgen, name: "morgen", id: "morgen" },
+      // { scene: arbeit, name: "arbeit", id: "arbeit" },
       { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
       { scene: alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
       { scene: zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },

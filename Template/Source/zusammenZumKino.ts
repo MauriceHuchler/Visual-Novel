@@ -1,5 +1,7 @@
 namespace Template {
     export async function zusammenZumKino(): Template.ƒS.SceneReturn {
+        await ƒS.Location.show(bg.kino);
+        await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "durch die ganze Sache hat sich alles verzögert, sodass sie nichtmehr in den Film gelassen werden, da dieser schon angefangen hat.");
         let kinoDecision = {
@@ -13,12 +15,13 @@ namespace Template {
             case kinoDecision.aufgeregt:
                 dataForSave.protagonist.furor += 1;
                 dataForSave.protagonist.dinaLovesYou = false;
-                //TODO: Dina angry einblenden
-                // await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent())
+                await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
+                await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(char.Dina.name, "Immer geht es nur um dich und deine Probleme.");
-                //TODO: dina ausblenden
                 await Template.ƒS.Speech.tell(char.Erzahler.name, char.Dina.name + " lässt " + dataForSave.protagonist.name + " alleine zurück und macht sich auf den Heimweg.");
+                await Template.ƒS.Character.hide(char.Dina);
+                await Template.ƒS.update(0.1);
                 return "alleinEssen";
             case kinoDecision.entspannt:
                 dataForSave.protagonist.furor -= 1;
@@ -34,6 +37,7 @@ namespace Template {
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Kurz bevor die beiden sich Küssen, schrecken beide auf");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "ein ohrenbetäubender Knall ist zu hören");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinauas auf die Straße um nachzuschauen was passiert ist.");
+                await Template.ƒS.Character.hideAll();
                 return "introEnde";
         }
     }

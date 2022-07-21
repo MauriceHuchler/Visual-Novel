@@ -31,6 +31,14 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        dinasHaus: {
+            name: string;
+            background: string;
+        };
+        vulkan: {
+            name: string;
+            background: string;
+        };
     };
 }
 declare namespace Template {
