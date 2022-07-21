@@ -1,5 +1,7 @@
 namespace Template {
     export async function dinasHaus(): ƒS.SceneReturn {
+        ƒS.Sound.fade(sounds.jungle, 0.5, 1, true);
+        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.Location.show(bg.dinasHaus);
         await Template.ƒS.update(0.5);
         await ƒS.Speech.tell(char.Erzahler.name, "Dina sieht man schon von weitem.");
@@ -26,9 +28,7 @@ namespace Template {
 
         switch (dinaDecisionElement) {
             case dinaDecision.aufregen:
-                dataForSave.protagonist.dinaLovesYou = false;
-                dataForSave.protagonist.furor += 1;
-                updateFuror();
+                beAngry();
                 await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "weißt Du was? Ich mach das nichtmehr mit!");
@@ -41,8 +41,7 @@ namespace Template {
                 await Template.ƒS.update(0.1);
                 return "alleinAbHaus";
             case dinaDecision.entspannt:
-                dataForSave.protagonist.furor -= 1;
-                updateFuror();
+                beChill();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " und Dina unterhalten sich und versuchen eine Lösung für das ganze Problem zu finden.");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Die beiden kommen auf die Lösung zusammen zum Kino zu laufen und machen sich auf den Weg.");
                 await Template.ƒS.Character.hideAll();

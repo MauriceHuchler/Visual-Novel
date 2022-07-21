@@ -6,7 +6,7 @@ var Template;
     console.log("FudgeStory template starting");
     Template.dataForSave = {
         protagonist: {
-            name: "",
+            name: "Ferdinand",
             furor: 0,
             dinaLovesYou: true
         }
@@ -26,9 +26,9 @@ var Template;
         gameMenu.close();
         Template.ƒS.Speech.hide();
         let scenes = [
-            // { scene: intro, name: "intro", id: "intro" },
-            // { scene: morgen, name: "morgen", id: "morgen" },
-            // { scene: arbeit, name: "arbeit", id: "arbeit" },
+            { scene: Template.intro, name: "intro", id: "intro" },
+            { scene: Template.morgen, name: "morgen", id: "morgen" },
+            { scene: Template.arbeit, name: "arbeit", id: "arbeit" },
             { scene: Template.dinasHaus, name: "dinasHaus", id: "dinasHaus" },
             { scene: Template.alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
             { scene: Template.zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
@@ -60,6 +60,18 @@ var Template;
         furor.textContent = Template.dataForSave.protagonist.furor.toString();
     }
     Template.updateFuror = updateFuror;
+    function beAngry() {
+        Template.ƒS.Sound.fade(Template.sounds.roar, 0.5, 0.1, false);
+        Template.dataForSave.protagonist.furor += 1;
+        updateFuror();
+    }
+    Template.beAngry = beAngry;
+    function beChill() {
+        Template.ƒS.Sound.fade(Template.sounds.relax, 0.5, 0.1, false);
+        Template.dataForSave.protagonist.furor -= 1;
+        updateFuror();
+    }
+    Template.beChill = beChill;
     async function buttonFunctionalities(_option) {
         switch (_option) {
             case inGameMenu.save:
@@ -78,12 +90,14 @@ var Template;
 var Template;
 (function (Template) {
     async function arbeit() {
-        await Template.ƒS.Location.show(Template.bg.bad);
+        await Template.ƒS.Location.show(Template.bg.arbeit);
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        Template.ƒS.Sound.fade(Template.sounds.work, 0.5, 1, true);
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " sitz in seinem/ihrem Büro an einem Schreibtisch");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und sortiert einige lose Blätter die ünber die Wochen liegen geblieben sind.");
+        Template.ƒS.Sound.fade(Template.sounds.boom, 0.5, 0.1, false);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dadurch wirbeln all deine sorgfältig sortierten Blätter auf und flattern durch die Luft.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die Tür fliegt auf und " + Template.dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
@@ -101,12 +115,10 @@ var Template;
         let bossDecisionElement = await Template.ƒS.Menu.getInput(bossDecision, "button");
         switch (bossDecisionElement) {
             case bossDecision.aufregen:
-                Template.dataForSave.protagonist.furor += 1;
-                Template.updateFuror();
+                Template.beAngry();
                 break;
             case bossDecision.entspannt:
-                Template.dataForSave.protagonist.furor -= 1;
-                Template.updateFuror();
+                Template.beChill();
                 break;
         }
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Donald lässt dich nicht ausreden und unterbricht dich mitten in deinem Satz mit:");
@@ -115,6 +127,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "aus unerklärlichen Gründen hat " + Template.dataForSave.protagonist.name + " es trotzdem noch geschafft seine Arbeit innerhalb der Arbeitszeit auszuführen und verlässt pünktlich die Arbeit.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " steigt in sein/ihr Auto und fährt los um " + Template.char.Dina.name + " abzuholen.");
         await Template.ƒS.Character.hideAll();
+        Template.ƒS.Sound.fade(Template.sounds.work, 0, 1, false);
         return "dinasHaus";
     }
     Template.arbeit = arbeit;
@@ -133,7 +146,7 @@ var Template;
         },
         arbeit: {
             name: "arbeit",
-            background: "./Images/backgrounds/badSW.png"
+            background: "./Images/backgrounds/badSW.png" //TODO: right path
         },
         kino: {
             name: "kino",
@@ -145,7 +158,7 @@ var Template;
         },
         vulkan: {
             name: "vulkan",
-            background: "./Images/backgrounds/vulkanFabre.png"
+            background: "./Images/backgrounds/vulkanFarbe.png"
         }
     };
 })(Template || (Template = {}));
@@ -210,6 +223,8 @@ var Template;
 var Template;
 (function (Template) {
     async function dinasHaus() {
+        Template.ƒS.Sound.fade(Template.sounds.jungle, 0.5, 1, true);
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.Location.show(Template.bg.dinasHaus);
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina sieht man schon von weitem.");
@@ -233,9 +248,7 @@ var Template;
         let dinaDecisionElement = await Template.ƒS.Menu.getInput(dinaDecision, "button");
         switch (dinaDecisionElement) {
             case dinaDecision.aufregen:
-                Template.dataForSave.protagonist.dinaLovesYou = false;
-                Template.dataForSave.protagonist.furor += 1;
-                Template.updateFuror();
+                Template.beAngry();
                 await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "weißt Du was? Ich mach das nichtmehr mit!");
@@ -248,8 +261,7 @@ var Template;
                 await Template.ƒS.update(0.1);
                 return "alleinAbHaus";
             case dinaDecision.entspannt:
-                Template.dataForSave.protagonist.furor -= 1;
-                Template.updateFuror();
+                Template.beChill();
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " und Dina unterhalten sich und versuchen eine Lösung für das ganze Problem zu finden.");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die beiden kommen auf die Lösung zusammen zum Kino zu laufen und machen sich auf den Weg.");
                 await Template.ƒS.Character.hideAll();
@@ -317,13 +329,11 @@ var Template;
         let zahnbuersteDecisionElement = await Template.ƒS.Menu.getInput(zahnbuersteDecision, "button");
         switch (zahnbuersteDecisionElement) {
             case zahnbuersteDecision.aufregen:
-                Template.dataForSave.protagonist.furor += 1;
-                Template.updateFuror();
+                Template.beAngry();
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "schon leicht genervt greift er/sie zum Kamm");
                 break;
             case zahnbuersteDecision.entspannt:
-                Template.updateFuror();
-                Template.dataForSave.protagonist.furor -= 1;
+                Template.beChill();
                 break;
         }
         Template.ƒS.Speech.clear();
@@ -337,12 +347,10 @@ var Template;
         let kammDecisionElement = await Template.ƒS.Menu.getInput(kammDecision, "button");
         switch (kammDecisionElement) {
             case kammDecision.aufregen2:
-                Template.dataForSave.protagonist.furor += 1;
-                Template.updateFuror();
+                Template.beAngry();
                 break;
             case kammDecision.entspannt2:
-                Template.dataForSave.protagonist.furor -= 1;
-                Template.updateFuror();
+                Template.beChill();
                 break;
         }
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Naja denkt sich " + Template.dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
@@ -358,10 +366,10 @@ var Template;
         let tagDecisionElement = await Template.ƒS.Menu.getInput(tagDecision, "button");
         switch (tagDecisionElement) {
             case tagDecision.aufregen:
-                Template.dataForSave.protagonist.furor += 1;
+                Template.beAngry();
                 break;
             case tagDecision.entspannt:
-                Template.dataForSave.protagonist.furor -= 1;
+                Template.beChill();
                 break;
         }
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "Oh, das Tut mir Leid! Ich würde gern was Gutes tun.");
@@ -369,6 +377,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "Ich hab dich lieb und wünsche Dir noch einen schönen Arbeitstag, wir sehen uns heute Abend!");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " legt auf und setzt sich in das Auto um zur Arbeit zu fahren");
         Template.ƒS.Character.hideAll();
+        Template.ƒS.Sound.fade(Template.sounds.jungle, 0, 1, true);
         return "arbeit";
     }
     Template.morgen = morgen;
@@ -377,7 +386,12 @@ var Template;
 (function (Template) {
     Template.sounds = {
         jungle: "./Sounds/jungle.mp3",
-        krack: "./Sounds/krack.mp3"
+        krack: "./Sounds/krack.mp3",
+        work: "./Sounds/work.mp3",
+        relax: "./Sounds/relax.mp3",
+        restaurant: "./Sounds/restaurant.mp3",
+        roar: "./Sounds/roar.mp3",
+        boom: "./Sounds/boom.mp3"
     };
 })(Template || (Template = {}));
 var Template;
@@ -425,7 +439,8 @@ var Template;
 (function (Template) {
     async function endeNeutral() {
         //TODO: background = Brokomet
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "völlig geschockt bleibt Name stehen");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "komplett aufgewühlt durch den Tag weiß er/sie nicht was er/sie tun soll.");
         if (Template.dataForSave.protagonist.dinaLovesYou) {
@@ -468,6 +483,7 @@ var Template;
 var Template;
 (function (Template) {
     async function introEnde() {
+        Template.ƒS.Sound.fade(Template.sounds.jungle, 0.5, 1, true);
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als " + Template.dataForSave.protagonist.name + " nach oben blickt kann er/sie seinen Augen kaum glauben...");
@@ -491,6 +507,7 @@ var Template;
 (function (Template) {
     async function zusammenZumKino() {
         await Template.ƒS.Location.show(Template.bg.kino);
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "durch die ganze Sache hat sich alles verzögert, sodass sie nichtmehr in den Film gelassen werden, da dieser schon angefangen hat.");
@@ -501,9 +518,8 @@ var Template;
         let kinoDecisionElement = await Template.ƒS.Menu.getInput(kinoDecision, "button");
         switch (kinoDecisionElement) {
             case kinoDecision.aufgeregt:
-                Template.dataForSave.protagonist.furor += 1;
+                Template.beAngry();
                 Template.dataForSave.protagonist.dinaLovesYou = false;
-                Template.updateFuror();
                 await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
@@ -513,8 +529,7 @@ var Template;
                 await Template.ƒS.update(0.1);
                 return "alleinEssen";
             case kinoDecision.entspannt:
-                Template.dataForSave.protagonist.furor -= 1;
-                Template.updateFuror();
+                Template.beChill();
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina und " + Template.dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");

@@ -23,14 +23,12 @@ namespace Template {
 
         switch (zahnbuersteDecisionElement) {
             case zahnbuersteDecision.aufregen:
-                dataForSave.protagonist.furor += 1;
-                updateFuror();
+                beAngry();
                 await ƒS.Speech.tell(char.Erzahler.name, "schon leicht genervt greift er/sie zum Kamm");
                 break;
 
             case zahnbuersteDecision.entspannt:
-                updateFuror();
-                dataForSave.protagonist.furor -= 1;
+                beChill();
                 break;
 
         }
@@ -51,12 +49,11 @@ namespace Template {
 
         switch (kammDecisionElement) {
             case kammDecision.aufregen2:
-                dataForSave.protagonist.furor += 1;
-                updateFuror();
+                beAngry();
+
                 break;
             case kammDecision.entspannt2:
-                dataForSave.protagonist.furor -= 1;
-                updateFuror();
+                beChill();
                 break;
         }
 
@@ -76,10 +73,11 @@ namespace Template {
 
         switch (tagDecisionElement) {
             case tagDecision.aufregen:
-                dataForSave.protagonist.furor += 1;
+                beAngry();
+
                 break;
             case tagDecision.entspannt:
-                dataForSave.protagonist.furor -= 1;
+                beChill();
                 break;
         }
 
@@ -88,6 +86,7 @@ namespace Template {
         await ƒS.Speech.tell(char.Dina.name, "Ich hab dich lieb und wünsche Dir noch einen schönen Arbeitstag, wir sehen uns heute Abend!");
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " legt auf und setzt sich in das Auto um zur Arbeit zu fahren");
         Template.ƒS.Character.hideAll();
+        ƒS.Sound.fade(sounds.jungle, 0, 1, true);
         return "arbeit"
 
 

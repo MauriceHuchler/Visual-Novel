@@ -11,7 +11,7 @@ namespace Template {
         },
         arbeit: {
             name: "arbeit",
-            background: "./Images/backgrounds/badSW.png"
+            background: "./Images/backgrounds/badSW.png"//TODO: right path
         },
         kino: {
             name: "kino",
@@ -23,7 +23,7 @@ namespace Template {
         },
         vulkan: {
             name: "vulkan",
-            background: "./Images/backgrounds/vulkanFabre.png"
+            background: "./Images/backgrounds/vulkanFarbe.png" 
         }
     }
 }

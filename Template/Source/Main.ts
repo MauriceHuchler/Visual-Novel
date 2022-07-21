@@ -6,7 +6,7 @@ namespace Template {
 
   export let dataForSave = {
     protagonist: {
-      name: "",
+      name: "Ferdinand",
       furor: 0,
       dinaLovesYou: true
     }
@@ -27,9 +27,9 @@ namespace Template {
     gameMenu.close();
     ƒS.Speech.hide();
     let scenes: ƒS.Scenes = [
-      // { scene: intro, name: "intro", id: "intro" },
-      // { scene: morgen, name: "morgen", id: "morgen" },
-      // { scene: arbeit, name: "arbeit", id: "arbeit" },
+      { scene: intro, name: "intro", id: "intro" },
+      { scene: morgen, name: "morgen", id: "morgen" },
+      { scene: arbeit, name: "arbeit", id: "arbeit" },
       { scene: dinasHaus, name: "dinasHaus", id: "dinasHaus" },
       { scene: alleinAbHaus, name: "alleinAbHaus", id: "alleinAbHaus" },
       { scene: zusammenZumKino, name: "zusammenZumKino", id: "zusammenZumKino" },
@@ -63,6 +63,18 @@ namespace Template {
   export function updateFuror() {
     let furor = document.getElementById("furor");
     furor.textContent = dataForSave.protagonist.furor.toString();
+  }
+
+  export function beAngry() {
+    ƒS.Sound.fade(sounds.roar, 0.5, 0.1, false);
+    dataForSave.protagonist.furor += 1;
+    updateFuror();
+  }
+
+  export function beChill() {
+    ƒS.Sound.fade(sounds.relax, 0.5, 0.1, false);
+    dataForSave.protagonist.furor -= 1;
+    updateFuror();
   }
 
 

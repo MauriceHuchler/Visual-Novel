@@ -1,6 +1,5 @@
 namespace Template {
     export async function endeSchlecht(): ƒS.SceneReturn {
-        
         await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
         await Template.ƒS.Speech.tell(char.Erzahler.name, "'jetzt reichts' denkt sich Name" + dataForSave.protagonist.name);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "komplett außer Rand und Band rennt " + dataForSave.protagonist.name + " davon");

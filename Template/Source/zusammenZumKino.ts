@@ -1,6 +1,7 @@
 namespace Template {
     export async function zusammenZumKino(): Template.ƒS.SceneReturn {
         await ƒS.Location.show(bg.kino);
+        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "durch die ganze Sache hat sich alles verzögert, sodass sie nichtmehr in den Film gelassen werden, da dieser schon angefangen hat.");
@@ -13,9 +14,9 @@ namespace Template {
 
         switch (kinoDecisionElement) {
             case kinoDecision.aufgeregt:
-                dataForSave.protagonist.furor += 1;
+                beAngry();
                 dataForSave.protagonist.dinaLovesYou = false;
-                updateFuror();
+
                 await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
@@ -25,8 +26,7 @@ namespace Template {
                 await Template.ƒS.update(0.1);
                 return "alleinEssen";
             case kinoDecision.entspannt:
-                dataForSave.protagonist.furor -= 1;
-                updateFuror();
+                beChill();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina und " + dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");

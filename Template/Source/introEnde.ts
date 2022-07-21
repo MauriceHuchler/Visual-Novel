@@ -1,5 +1,6 @@
 namespace Template {
     export async function introEnde(): Template.ƒS.SceneReturn {
+        ƒS.Sound.fade(sounds.jungle, 0.5, 1, true);
         await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Als " + dataForSave.protagonist.name + " nach oben blickt kann er/sie seinen Augen kaum glauben...");

@@ -1,12 +1,13 @@
 namespace Template {
     export async function arbeit(): ƒS.SceneReturn {
-        await ƒS.Location.show(bg.bad);
+        await ƒS.Location.show(bg.arbeit);
         await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        ƒS.Sound.fade(sounds.work, 0.5, 1, true);
         await ƒS.update(0.5);
-
         await ƒS.Speech.tell(char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " sitz in seinem/ihrem Büro an einem Schreibtisch");
         await ƒS.Speech.tell(char.Erzahler.name, "und sortiert einige lose Blätter die ünber die Wochen liegen geblieben sind.");
+        ƒS.Sound.fade(sounds.boom, 0.5, 0.1, false);
         await ƒS.Speech.tell(char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
         await ƒS.Speech.tell(char.Erzahler.name, "Dadurch wirbeln all deine sorgfältig sortierten Blätter auf und flattern durch die Luft.");
         await ƒS.Speech.tell(char.Erzahler.name, "Die Tür fliegt auf und " + dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
@@ -27,12 +28,10 @@ namespace Template {
 
         switch (bossDecisionElement) {
             case bossDecision.aufregen:
-                dataForSave.protagonist.furor += 1;
-                updateFuror();
+                beAngry();
                 break;
             case bossDecision.entspannt:
-                dataForSave.protagonist.furor -= 1;
-                updateFuror();
+                beChill();
                 break;
         }
 
@@ -42,6 +41,7 @@ namespace Template {
         await ƒS.Speech.tell(char.Erzahler.name, "aus unerklärlichen Gründen hat " + dataForSave.protagonist.name + " es trotzdem noch geschafft seine Arbeit innerhalb der Arbeitszeit auszuführen und verlässt pünktlich die Arbeit.");
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " steigt in sein/ihr Auto und fährt los um " + char.Dina.name + " abzuholen.");
         await Template.ƒS.Character.hideAll();
+        ƒS.Sound.fade(sounds.work, 0, 1, false);
         return "dinasHaus"
 
 

@@ -9,6 +9,8 @@ declare namespace Template {
         };
     };
     function updateFuror(): void;
+    function beAngry(): void;
+    function beChill(): void;
 }
 declare namespace Template {
     function arbeit(): ƒS.SceneReturn;
@@ -99,6 +101,11 @@ declare namespace Template {
     let sounds: {
         jungle: string;
         krack: string;
+        work: string;
+        relax: string;
+        restaurant: string;
+        roar: string;
+        boom: string;
     };
 }
 declare namespace Template {
