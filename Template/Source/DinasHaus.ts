@@ -28,6 +28,7 @@ namespace Template {
             case dinaDecision.aufregen:
                 dataForSave.protagonist.dinaLovesYou = false;
                 dataForSave.protagonist.furor += 1;
+                updateFuror();
                 await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "weißt Du was? Ich mach das nichtmehr mit!");
@@ -41,6 +42,7 @@ namespace Template {
                 return "alleinAbHaus";
             case dinaDecision.entspannt:
                 dataForSave.protagonist.furor -= 1;
+                updateFuror();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " und Dina unterhalten sich und versuchen eine Lösung für das ganze Problem zu finden.");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Die beiden kommen auf die Lösung zusammen zum Kino zu laufen und machen sich auf den Weg.");
                 await Template.ƒS.Character.hideAll();

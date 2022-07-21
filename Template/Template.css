@@ -10,6 +10,7 @@ scene {
   display: inline-block;
 }
 
+
 dialog[type=splash] {
   margin: 0px;
   padding: 0px;
@@ -82,4 +83,19 @@ button{
   font-style: oblique;
   font-weight: bold;
   
+}
+#furor{
+  position: absolute;
+  color: rgb(21, 158, 25);
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+}
+
+.display{
+  color: rgb(130, 210, 130);
+  display: flex;
+  justify-content: right;
+  border: 1px black;
 }

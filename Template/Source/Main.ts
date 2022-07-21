@@ -60,6 +60,11 @@ namespace Template {
 
   }
 
+  export function updateFuror() {
+    let furor = document.getElementById("furor");
+    furor.textContent = dataForSave.protagonist.furor.toString();
+  }
+
 
   async function buttonFunctionalities(_option: string): Promise<void> {
     switch (_option) {

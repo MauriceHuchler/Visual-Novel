@@ -15,6 +15,7 @@ namespace Template {
             case kinoDecision.aufgeregt:
                 dataForSave.protagonist.furor += 1;
                 dataForSave.protagonist.dinaLovesYou = false;
+                updateFuror();
                 await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
@@ -25,6 +26,7 @@ namespace Template {
                 return "alleinEssen";
             case kinoDecision.entspannt:
                 dataForSave.protagonist.furor -= 1;
+                updateFuror();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina und " + dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");

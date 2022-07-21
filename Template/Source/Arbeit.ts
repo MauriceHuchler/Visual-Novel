@@ -28,9 +28,11 @@ namespace Template {
         switch (bossDecisionElement) {
             case bossDecision.aufregen:
                 dataForSave.protagonist.furor += 1;
+                updateFuror();
                 break;
             case bossDecision.entspannt:
                 dataForSave.protagonist.furor -= 1;
+                updateFuror();
                 break;
         }
 

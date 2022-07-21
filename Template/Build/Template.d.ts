@@ -8,6 +8,7 @@ declare namespace Template {
             dinaLovesYou: boolean;
         };
     };
+    function updateFuror(): void;
 }
 declare namespace Template {
     function arbeit(): ƒS.SceneReturn;

@@ -24,10 +24,12 @@ namespace Template {
         switch (zahnbuersteDecisionElement) {
             case zahnbuersteDecision.aufregen:
                 dataForSave.protagonist.furor += 1;
+                updateFuror();
                 await ƒS.Speech.tell(char.Erzahler.name, "schon leicht genervt greift er/sie zum Kamm");
                 break;
 
             case zahnbuersteDecision.entspannt:
+                updateFuror();
                 dataForSave.protagonist.furor -= 1;
                 break;
 
@@ -49,10 +51,12 @@ namespace Template {
 
         switch (kammDecisionElement) {
             case kammDecision.aufregen2:
-                dataForSave.protagonist.furor += 1
+                dataForSave.protagonist.furor += 1;
+                updateFuror();
                 break;
             case kammDecision.entspannt2:
-                dataForSave.protagonist.furor -= 1
+                dataForSave.protagonist.furor -= 1;
+                updateFuror();
                 break;
         }
 
