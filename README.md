@@ -16,14 +16,14 @@ Steuerung:
 |    | Titel                 | D-Day
 |    | Name                  | Maurice Huchler
 |    | Matrikelnummer        | 260374
-|  1 | Konzeption     |                                                                                                                          |
-|  2 | Charakter-Konzept     |                                                                                                                                                                              |
+|  1 | Konzeption     | https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf                                                                                                                        |
+|  2 | Charakter-Konzept     |  https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf                                                                                                                                                                            |
 |  3 | Auswahlmöglichkeiten | Fast jede Szene hat eine oder mehrere Auswahlmöglichkeiten                                                                                                                                                     |
-|  4 | Branching narratives      |                                                                                                                                                         |
+|  4 | Branching narratives      |  https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf                                                                                                                                                       |
 |  5 | Transitions            | -                                                                                                                                                     |
 |  6 | Novel-Pages            | Verwendet für Menü-Credits und Endcredits                                                                                                                                                          |
 |  7 |         Audio         | Es gibt Ambient-Sound, der das Spiel unterstütz und jede Entscheidung wird audiotechnisch untermalt                                                                                                |
-|  8 |         GUI            | -                                                                                                                                                                   |
+|  8 |         GUI            | Es gibt eine Anzeige die über den derzeitigen Furor-Stand informiert                                                                                                                                                                |
 |  9 | Input-Feld(er)          | Während des Intros kann der Spieler sich selbst einen Namen geben, der den bestimmt wie der Protagonist gennant wird                                                                                                                                                                   |
 |  10 | Punkteverteilungssystem     | Deine Entscheidungen geben dir "Furor" je nachdem welchen Furor-Wert du am Ende der Story besitzt entscheidet sich welches Ende passiert.                                                                                                                                                             |
 |  11 | Inventory- und Item-System     | -                                                                                                                                                           |
