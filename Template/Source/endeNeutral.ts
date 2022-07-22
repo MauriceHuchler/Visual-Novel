@@ -3,7 +3,7 @@ namespace Template {
         //TODO: background = Brokomet
         await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
-        await Template.ƒS.Speech.tell(char.Erzahler.name, "völlig geschockt bleibt Name stehen");
+        await Template.ƒS.Speech.tell(char.Erzahler.name, "völlig geschockt bleibt " + dataForSave.protagonist.name + " stehen");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "komplett aufgewühlt durch den Tag weiß er/sie nicht was er/sie tun soll.");
 
         if (dataForSave.protagonist.dinaLovesYou) {

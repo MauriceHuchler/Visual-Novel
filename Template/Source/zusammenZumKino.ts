@@ -30,12 +30,12 @@ namespace Template {
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina und " + dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");
-                await Template.ƒS.Speech.tell(char.Erzahler.name, "Da fällt Name wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
+                await Template.ƒS.Speech.tell(char.Erzahler.name, "Da fällt " + dataForSave.protagonist.name + " wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "leicht genervt bestellt sich " + dataForSave.protagonist.name + " eine Suppe.");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "trotz des anstrengenden Tages haben die beiden einen wunderschönen Abend zusammen und unterhalten sich über viele Dinge");
-                await Template.ƒS.Speech.tell(char.Erzahler.name, "Als die Suppe ankommt und Name eine Schuppe in der Suppe entdeckt");
+                await Template.ƒS.Speech.tell(char.Erzahler.name, "Als die Suppe ankommt und " + dataForSave.protagonist.name + " eine Schuppe in der Suppe entdeckt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "lässt er/sie sich nicht davon aufbringen und ist einfach nur froh Dina an seiner/ihrer Seite zu haben.");
-                await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich sehr lange dauert um Name einen Kuss zu geben");
+                await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich sehr lange dauert " + dataForSave.protagonist.name + " einen Kuss zu geben");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Kurz bevor die beiden sich Küssen, schrecken beide auf");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "ein ohrenbetäubender Knall ist zu hören");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinauas auf die Straße um nachzuschauen was passiert ist.");
