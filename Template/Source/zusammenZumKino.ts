@@ -16,7 +16,6 @@ namespace Template {
             case kinoDecision.aufgeregt:
                 beAngry();
                 dataForSave.protagonist.dinaLovesYou = false;
-
                 await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
@@ -29,6 +28,7 @@ namespace Template {
                 beChill();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina und " + dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
                 await ƒS.Location.show(bg.brokomet);
+                await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Da fällt " + dataForSave.protagonist.name + " wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
@@ -37,6 +37,7 @@ namespace Template {
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Als die Suppe ankommt und " + dataForSave.protagonist.name + " eine Schuppe in der Suppe entdeckt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "lässt " + dataForSave.protagonist.name + " sich nicht davon aufbringen und ist einfach nur froh Dina bei sich zu haben.");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich seeeeeehr lange dauert um" + dataForSave.protagonist.name + " einen Kuss zu geben");
+                Template.ƒS.Sound.play(sounds.komet, 0.2, false);
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Kurz bevor die beiden sich Küssen, schrecken beide auf");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Ein ohrenbetäubender Knall ist zu hören");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinaus auf die Straße um nachzuschauen was passiert ist.");

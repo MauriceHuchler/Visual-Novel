@@ -49,11 +49,11 @@ namespace Template {
 
         switch (kammDecisionElement) {
             case kammDecision.aufregen2:
-                beAngry();
+                await beAngry();
 
                 break;
             case kammDecision.entspannt2:
-                beChill();
+                await beChill();
                 break;
         }
 
@@ -73,11 +73,11 @@ namespace Template {
 
         switch (tagDecisionElement) {
             case tagDecision.aufregen:
-                beAngry();
+                await beAngry();
 
                 break;
             case tagDecision.entspannt:
-                beChill();
+                await beChill();
                 break;
         }
 

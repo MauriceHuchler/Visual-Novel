@@ -60,16 +60,18 @@ var Template;
         furor.textContent = Template.dataForSave.protagonist.furor.toString();
     }
     Template.updateFuror = updateFuror;
-    function beAngry() {
-        Template.ƒS.Sound.fade(Template.sounds.roar, 0.5, 0.1, false);
+    async function beAngry() {
+        await Template.ƒS.Sound.play(Template.sounds.roar, 0.5, false);
         Template.dataForSave.protagonist.furor += 1;
         updateFuror();
+        await Template.ƒS.update(0.1);
     }
     Template.beAngry = beAngry;
-    function beChill() {
-        Template.ƒS.Sound.fade(Template.sounds.relax, 0.5, 0.1, false);
+    async function beChill() {
+        await Template.ƒS.Sound.play(Template.sounds.relax, 0.5, false);
         Template.dataForSave.protagonist.furor -= 1;
         updateFuror();
+        await Template.ƒS.update(0.1);
     }
     Template.beChill = beChill;
     async function buttonFunctionalities(_option) {
@@ -357,10 +359,10 @@ var Template;
         let kammDecisionElement = await Template.ƒS.Menu.getInput(kammDecision, "button");
         switch (kammDecisionElement) {
             case kammDecision.aufregen2:
-                Template.beAngry();
+                await Template.beAngry();
                 break;
             case kammDecision.entspannt2:
-                Template.beChill();
+                await Template.beChill();
                 break;
         }
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Naja denkt sich " + Template.dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
@@ -376,10 +378,10 @@ var Template;
         let tagDecisionElement = await Template.ƒS.Menu.getInput(tagDecision, "button");
         switch (tagDecisionElement) {
             case tagDecision.aufregen:
-                Template.beAngry();
+                await Template.beAngry();
                 break;
             case tagDecision.entspannt:
-                Template.beChill();
+                await Template.beChill();
                 break;
         }
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "Oh, das Tut mir Leid! Ich würde gern was Gutes tun.");
@@ -401,7 +403,8 @@ var Template;
         relax: "./Sounds/relax.mp3",
         restaurant: "./Sounds/restaurant.mp3",
         roar: "./Sounds/roar.mp3",
-        boom: "./Sounds/boom.mp3"
+        boom: "./Sounds/boom.mp3",
+        komet: "./Sounds/komet.mp3"
     };
 })(Template || (Template = {}));
 var Template;
@@ -425,6 +428,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Irgendwas mit Biss und nicht essen für Herbi-Erbis.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Was auch immer " + Template.dataForSave.protagonist.name + " mit diesem Schimpfwort meint.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Doch plötzlich schreckt " + Template.dataForSave.protagonist.name + " auf.");
+        Template.ƒS.Sound.play(Template.sounds.komet, 0.2, false);
         return "introEnde";
     }
     Template.alleinEssen = alleinEssen;
@@ -543,6 +547,7 @@ var Template;
                 Template.beChill();
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina und " + Template.dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
                 await Template.ƒS.Location.show(Template.bg.brokomet);
+                await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Da fällt " + Template.dataForSave.protagonist.name + " wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
@@ -551,6 +556,7 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als die Suppe ankommt und " + Template.dataForSave.protagonist.name + " eine Schuppe in der Suppe entdeckt");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "lässt " + Template.dataForSave.protagonist.name + " sich nicht davon aufbringen und ist einfach nur froh Dina bei sich zu haben.");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich seeeeeehr lange dauert um" + Template.dataForSave.protagonist.name + " einen Kuss zu geben");
+                Template.ƒS.Sound.play(Template.sounds.komet, 0.2, false);
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Kurz bevor die beiden sich Küssen, schrecken beide auf");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein ohrenbetäubender Knall ist zu hören");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinaus auf die Straße um nachzuschauen was passiert ist.");

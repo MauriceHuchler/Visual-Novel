@@ -9,8 +9,8 @@ declare namespace Template {
         };
     };
     function updateFuror(): void;
-    function beAngry(): void;
-    function beChill(): void;
+    function beAngry(): Promise<void>;
+    function beChill(): Promise<void>;
 }
 declare namespace Template {
     function arbeit(): ƒS.SceneReturn;
@@ -114,6 +114,7 @@ declare namespace Template {
         restaurant: string;
         roar: string;
         boom: string;
+        komet: string;
     };
 }
 declare namespace Template {

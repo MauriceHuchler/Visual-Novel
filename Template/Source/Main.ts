@@ -65,16 +65,20 @@ namespace Template {
     furor.textContent = dataForSave.protagonist.furor.toString();
   }
 
-  export function beAngry() {
-    ƒS.Sound.fade(sounds.roar, 0.5, 0.1, false);
+  export async function beAngry() {
+    await ƒS.Sound.play(sounds.roar, 0.5, false);
     dataForSave.protagonist.furor += 1;
     updateFuror();
+    await Template.ƒS.update(0.1);
+
   }
 
-  export function beChill() {
-    ƒS.Sound.fade(sounds.relax, 0.5, 0.1, false);
+  export async function beChill() {
+    await ƒS.Sound.play(sounds.relax, 0.5, false);
     dataForSave.protagonist.furor -= 1;
     updateFuror();
+    await Template.ƒS.update(0.1);
+
   }
 
 
