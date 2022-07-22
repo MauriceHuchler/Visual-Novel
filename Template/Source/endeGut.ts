@@ -1,10 +1,10 @@
 namespace Template {
     export async function endeGut(): ƒS.SceneReturn {
         await ƒS.Location.show(bg.vulkan);
+        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.5);
-        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
-        await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern");
-        await Template.ƒS.Speech.tell(char.Erzahler.name, "vor lauter Freude und Glück die ganze Ereignisse heute gemeistert zu haben und immer entspannt zu bleiben");
+        await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern.");
+        await Template.ƒS.Speech.tell(char.Erzahler.name, "Vor lauter Freude und Glück, die ganze Ereignisse heute gemeistert zu haben und immer entspannt zu bleiben,");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "strahlt " + dataForSave.protagonist.name + " bis über beide T-Rex-Ohren.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Aus unerklärlichen Gründen merkt der Komet,");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "dass er heute keinen Schaden anrichten kann.");

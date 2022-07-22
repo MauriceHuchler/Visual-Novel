@@ -437,10 +437,10 @@ var Template;
 (function (Template) {
     async function endeGut() {
         await Template.ƒS.Location.show(Template.bg.vulkan);
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.5);
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Freude und Glück die ganze Ereignisse heute gemeistert zu haben und immer entspannt zu bleiben");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Vor lauter Freude und Glück, die ganze Ereignisse heute gemeistert zu haben und immer entspannt zu bleiben,");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "strahlt " + Template.dataForSave.protagonist.name + " bis über beide T-Rex-Ohren.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Aus unerklärlichen Gründen merkt der Komet,");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "dass er heute keinen Schaden anrichten kann.");
@@ -453,21 +453,20 @@ var Template;
 var Template;
 (function (Template) {
     async function endeNeutral() {
-        //TODO: background = Brokomet
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "völlig geschockt bleibt " + Template.dataForSave.protagonist.name + " stehen");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "komplett aufgewühlt durch den Tag weiß er/sie nicht was er/sie tun soll.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Völlig geschockt bleibt " + Template.dataForSave.protagonist.name + " stehen.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Komplett aufgewühlt durch den Tag weiß " + Template.dataForSave.protagonist.name + " nicht was zu tun ist.");
         if (Template.dataForSave.protagonist.dinaLovesYou) {
             await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " nimmt Dina in den Arm und sagt ihr, dass er/sie sie liebt.");
         }
         else {
-            await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " versucht Dina anzurufen und ihr zu sagen, dass ihm/ihr das alles fürchterlich Leid tut.");
+            await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " versucht Dina anzurufen und ihr zu sagen, dass alles ein Fehler war und ihm/ihr fürchterlich Leid tut.");
         }
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "die Erde bebt.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die Erde bebt.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Der Komet ist nun mittlerweile auf der Erde aufgeschlagen.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Alles was noch vor ein paar Sekunden standhaft war, steht jetzt nichtmehr oder liegt auf dem Boden");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "nimmt nur noch war wie es ganz warm wird und immer heller und heller...");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Alles was noch vor ein paar Sekunden standhaft war, steht jetzt nichtmehr oder liegt auf dem Boden.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " nimmt nur noch war wie es ganz warm wird und immer heller und heller...");
         Template.ƒS.Character.hideAll();
         return "credits";
     }
@@ -476,20 +475,22 @@ var Template;
 var Template;
 (function (Template) {
     async function endeSchlecht() {
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "'jetzt reichts' denkt sich " + Template.dataForSave.protagonist.name);
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "komplett außer Rand und Band rennt " + Template.dataForSave.protagonist.name + " davon");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "so könne der Tag nicht enden.");
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.update(0.1);
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "'Jetzt reichts!' denkt sich " + Template.dataForSave.protagonist.name);
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Komplett außer Rand und Band rennt " + Template.dataForSave.protagonist.name + " davon.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "So könne der Tag nicht enden.");
         await Template.ƒS.Location.show(Template.bg.vulkan);
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "An einem Vulkan angekommen nennt " + Template.dataForSave.protagonist.name + " ein geheimes Codewort");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "daraufhin öffnet sich eine Schleuse und " + Template.dataForSave.protagonist.name + " verschwindet in das innere des Vulkans");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Von außen hört man lautes rumpeln und poltern ab und zu übertönt durch ein lautes Fluchen");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "kurz Zeit später erhebt sich aus dem oberen Teil des Vulkanes eine Platform.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Es ist " + Template.dataForSave.protagonist.name + " der/die auf einem Gerät sitzt dass an eine riesige futuristische Kanone erinnert");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "einen Todesstrah.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "nach ein zwei lauten Lachern,feuert er/sie den Strahl ab.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "in einem riesigen Feuerwerk zerbricht der Komet in millionen von kleinen Teilen");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und ein atemberaubendes Feuerwerk findet statt.");
+        await Template.ƒS.update(0.1);
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "An einem Vulkan angekommen nennt " + Template.dataForSave.protagonist.name + " ein geheimes Codewort.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Daraufhin öffnet sich eine Schleuse und " + Template.dataForSave.protagonist.name + " verschwindet in das Innere des Vulkans.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Von außen hört man lautes Rumpeln und Poltern, ab und zu übertönt durch ein lautes Fluchen.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Kurze Zeit später erhebt sich aus dem oberen Teil des Vulkanes eine Plattform.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Es ist " + Template.dataForSave.protagonist.name + " der/die auf einem Gerät sitzt, das an eine riesige futuristische Kanone erinnert.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein Todesstrahl.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Nach ein zwei lauten Lachern,feuert " + Template.dataForSave.protagonist.name + " den Strahl ab.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Der Komet zerbricht in Millionen kleine Teile.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein atemberaubendes Feuerwerk findet statt.");
         Template.ƒS.Character.hideAll();
         return "credits";
     }

@@ -3,6 +3,8 @@ html, body{
   height: 100vh;
   overflow: hidden;
   background-color: rgb(19, 49, 21);
+  display: flex;
+  justify-content: center;
 }
 
 scene {
@@ -30,16 +32,16 @@ canvas {
   width: 100%;
   height: auto;
   border: 10px solid rgb(7, 21, 1);;
-  border-radius: 50px;
+  border-radius: 30px;
 }
 
 speech {
-  position: absolute;
+  position:absolute;
   bottom: 25px;
-  left: 5%;
+  left: 9%;
   background-color: rgb(24, 76, 52);
   width: 80%;
-  height: 15vh;
+  height: auto;
   border: 5px solid rgb(7, 21, 1);
   border-radius: 5px;
 }
