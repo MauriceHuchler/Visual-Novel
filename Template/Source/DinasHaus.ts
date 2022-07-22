@@ -5,19 +5,19 @@ namespace Template {
         await Template.ƒS.Location.show(bg.dinasHaus);
         await Template.ƒS.update(0.5);
         await ƒS.Speech.tell(char.Erzahler.name, "Dina sieht man schon von weitem.");
-        await ƒS.Speech.tell(char.Erzahler.name, "ihr wunderschöner langer Hals kann man sehr schön erkennen");
-        await ƒS.Speech.tell(char.Erzahler.name, "Ihre wundervollen rundlich geformten Beine und der lange Schwanz lassen Sie von den anderen Artgenossen abheben.");
+        await ƒS.Speech.tell(char.Erzahler.name, "Ihren wunderschöner langer Hals kann man schon von weitem erkennen");
+        await ƒS.Speech.tell(char.Erzahler.name, "Durch ihre wundervoll rundlich geformten Beine und der lange Schwanz hebt sie sich von den anderen Artgenossen ab.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Anfänglich denkt " + dataForSave.protagonist.name + ", dass Dina früher doch noch größer war");
-        await Template.ƒS.Speech.tell(char.Erzahler.name, "Je näher " + dataForSave.protagonist.name + " aber an Dina herankommt fällt dir auf, wie Sie stetig wächst und wächst und immer größer wird.");
+        await Template.ƒS.Speech.tell(char.Erzahler.name, "Je näher " + dataForSave.protagonist.name + " aber an Sie herankommt, desto größer und größerscheint sie zu werden.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Angekommen bei Dina, zeigt sich ihre wahre Größe.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + "'s Nacken tut leicht weh, wenn er/sie versucht ihr in die Augen zu schauen.");
         await Template.ƒS.Character.show(char.Dina, char.Dina.pose.normal, Template.ƒS.positionPercent(85, 95));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(char.Dina.name, "Hi Schatz!");
-        await Template.ƒS.Speech.tell(char.Dina.name, "Danke dass du mich abholst!");
+        await Template.ƒS.Speech.tell(char.Dina.name, "Danke, dass du mich abholst!");
         await Template.ƒS.Speech.tell(char.Dina.name, "aber sag mal...");
-        await Template.ƒS.Speech.tell(char.Dina.name, "Du weißt dass ich ein Brachiosaurus bin.. und dadurch auch größere Sachen gewohnt bist.");
-        await Template.ƒS.Speech.tell(char.Dina.name, "ich glaube nicht, dass ich ins Auto passe.");
+        await Template.ƒS.Speech.tell(char.Dina.name, "Du weißt dass ich ein Brachiosaurus bin.. und dadurch größere Sachen gewohnt bin.");
+        await Template.ƒS.Speech.tell(char.Dina.name, "Ich glaube nicht, dass Ich ins Auto passe.");
 
         let dinaDecision = {
             aufregen: "Mit Dina einen Streit anfangen und dich über deinen Tag beschweren.",
