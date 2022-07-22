@@ -421,10 +421,10 @@ var Template;
 (function (Template) {
     async function alleinEssen() {
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " hat jetzt keine Lust mehr auf das vegane Restaurant");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " er/sie brauchen was richtiges zwischen den Zähnen");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "irgendwas mit Biss und nicht essen für Herbi-Erbis");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " was auch immer " + Template.dataForSave.protagonist.name + " mit diesem Schimpfwort meint.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " doch plötzlich schreckt " + Template.dataForSave.protagonist.name + " auf.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " brauch etwas richtiges zwischen den Zähnen.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Irgendwas mit Biss und nicht essen für Herbi-Erbis.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Was auch immer " + Template.dataForSave.protagonist.name + " mit diesem Schimpfwort meint.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Doch plötzlich schreckt " + Template.dataForSave.protagonist.name + " auf.");
         return "introEnde";
     }
     Template.alleinEssen = alleinEssen;
@@ -432,14 +432,15 @@ var Template;
 var Template;
 (function (Template) {
     async function endeGut() {
-        //TODO: background = brokomet
+        await Template.ƒS.Location.show(Template.bg.vulkan);
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Glück, all die schlechten Dinge heute so hinzunehmen wie sie sind und immer entspannt zu bleiben");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "strahlt " + Template.dataForSave.protagonist.name + " mit einem riesigen lächeln");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "aus unerklärlichen Gründen merkt der Komet,");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Freude und Glück die ganze Ereignisse heute gemeistert zu haben und immer entspannt zu bleiben");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "strahlt " + Template.dataForSave.protagonist.name + " bis über beide T-Rex-Ohren.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Aus unerklärlichen Gründen merkt der Komet,");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "dass er heute keinen Schaden anrichten kann.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und macht einen großen Bogen um die Erde.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "So denkt dieser sich: 'Heute nicht.' und macht einen großen Bogen um die Erde.");
         Template.ƒS.Character.hideAll();
         return "credits";
     }
