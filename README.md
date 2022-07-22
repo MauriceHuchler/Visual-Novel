@@ -16,10 +16,10 @@ Mach das beste aus deinem Tag! Er wird es dir danken!
 |    | Titel                 | D-Day
 |    | Name                  | Maurice Huchler
 |    | Matrikelnummer        | 260374
-|  1 | Konzeption     | https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf                                                                                                                        |
-|  2 | Charakter-Konzept     |  https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf                                                                                                                                                                            |
+|  1 | Konzeption     | [Konzept](https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf)                                                                                                                      |
+|  2 | Charakter-Konzept     |  [Konzept](https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf)                                                                                                                                                                            |
 |  3 | Auswahlmöglichkeiten | Fast jede Szene hat eine oder mehrere Auswahlmöglichkeiten                                                                                                                                                     |
-|  4 | Branching narratives      |  https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf                                                                                                                                                       |
+|  4 | Branching narratives      |  [Konzept](https://github.com/MauriceHuchler/Visual-Novel/blob/main/Template/konzept_Story.pdf)                                                                                                                                                       |
 |  5 | Transitions            | Standardtransitions                                                                                                                                                   |
 |  6 | Novel-Pages            | Verwendet für Menü-Credits und Endcredits                                                                                                                                                          |
 |  7 |         Audio         | Es gibt Ambient-Sound, der das Spiel unterstütz und jede Entscheidung durch ein Audio untermalt                                                                                               |
