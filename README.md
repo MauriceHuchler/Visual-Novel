@@ -1,10 +1,10 @@
-# Visual-Novel
+# Visual-Novel D-Day!
 
-[Play Now!](https://mauricehuchler.github.io/Visual-Novel//Template/Template.html)
+## [Play Now!](https://mauricehuchler.github.io/Visual-Novel//Template/Template.html)
 
 Mach das beste aus deinem Tag! Er wird es dir danken!
 
-Steuerung:
+### Steuerung:
 - F8: Speichert das Spiel
 - F9: Läd den Speicherstand
 
