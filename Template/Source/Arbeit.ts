@@ -1,7 +1,7 @@
 namespace Template {
     export async function arbeit(): ƒS.SceneReturn {
         await ƒS.Location.show(bg.arbeitSortiert);
-        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, getCharPosPerc(CHARACTERS.ERZAHLER));
         ƒS.Sound.fade(sounds.work, 0.5, 1, true);
         await ƒS.update(0.1);
         await ƒS.Speech.tell(char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
@@ -13,7 +13,7 @@ namespace Template {
         await ƒS.Speech.tell(char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
         await ƒS.Speech.tell(char.Erzahler.name, "Dadurch wirbeln alle eben sorgfältig sortierten Blätter auf und flattern durch die Luft.");
         await ƒS.Speech.tell(char.Erzahler.name, "Die Tür fliegt auf und " + dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
-        await Template.ƒS.Character.show(char.Donald, char.Donald.pose.angry, Template.ƒS.positionPercent(80, 80));
+        await Template.ƒS.Character.show(char.Donald, char.Donald.pose.angry, getCharPosPerc(CHARACTERS.DONALD));
         await ƒS.update(0.1);
         await ƒS.Speech.tell(char.Donald.name, dataForSave.protagonist.name.toLocaleUpperCase());
         await ƒS.Speech.tell(char.Donald.name, "WIR HABEN EIN GROßES PROBLEM!!!!");
@@ -39,6 +39,7 @@ namespace Template {
 
         await ƒS.Speech.tell(char.Erzahler.name, "Donald unterbricht " + dataForSave.protagonist.name + " aufgebracht:");
         await ƒS.Speech.tell(char.Donald.name, "SIE HABEN EINE WOCHE ZEIT!");
+        await Template.ƒS.Character.hide(char.Donald);
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " setzt seine/ihre Arbeit fort.");
         await ƒS.Speech.tell(char.Erzahler.name, "Aus unerklärlichen Gründen hat " + dataForSave.protagonist.name + " es trotzdem noch geschafft seine Arbeit rechtzeitig zu erledigen und verlässt pünktlich die Arbeit.");
         await ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " steigt in's Auto und fährt los um " + char.Dina.name + " abzuholen.");

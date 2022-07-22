@@ -1,10 +1,10 @@
 namespace Template {
     export async function intro(): ƒS.SceneReturn {
         ƒS.Sound.fade(sounds.jungle, 0.5, 1, true);
-        await ƒS.update(1);
         await ƒS.Location.show(bg.schlafzimmer);
-        await ƒS.update(0.5);
-        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.animate(char.Erzahler, char.Erzahler.pose.normal, getAnimation(ANIMATION.ERZAHLERSLIDEIN));
+
+        // await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await ƒS.update(0.5);
         await ƒS.Speech.tell(char.Erzahler.name, char.Erzahler.text.T001);
         await ƒS.Speech.tell(char.Erzahler.name, char.Erzahler.text.T002);
@@ -32,6 +32,7 @@ namespace Template {
             default:
                 break;
         }
+        await ƒS.update(0.5);
         return "morgen";
 
 

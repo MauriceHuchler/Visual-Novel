@@ -91,9 +91,36 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
+    let ANIMATION;
+    (function (ANIMATION) {
+        ANIMATION[ANIMATION["ERZAHLERSLIDEIN"] = 0] = "ERZAHLERSLIDEIN";
+        ANIMATION[ANIMATION["DINASLIDEIN"] = 1] = "DINASLIDEIN";
+    })(ANIMATION = Template.ANIMATION || (Template.ANIMATION = {}));
+    function getAnimation(ani) {
+        switch (ani) {
+            case ANIMATION.ERZAHLERSLIDEIN:
+                return {
+                    start: { translation: Template.ƒS.positionPercent(-50, 80) },
+                    end: { translation: Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER) },
+                    duration: 0.9,
+                    playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case ANIMATION.DINASLIDEIN:
+                return {
+                    start: { translation: Template.ƒS.positionPercent(150, 80) },
+                    end: { translation: Template.getCharPosPerc(Template.CHARACTERS.DINA) },
+                    duration: 2,
+                    playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+        }
+    }
+    Template.getAnimation = getAnimation;
+})(Template || (Template = {}));
+var Template;
+(function (Template) {
     async function arbeit() {
         await Template.ƒS.Location.show(Template.bg.arbeitSortiert);
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
         Template.ƒS.Sound.fade(Template.sounds.work, 0.5, 1, true);
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
@@ -105,7 +132,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dadurch wirbeln alle eben sorgfältig sortierten Blätter auf und flattern durch die Luft.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die Tür fliegt auf und " + Template.dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
-        await Template.ƒS.Character.show(Template.char.Donald, Template.char.Donald.pose.angry, Template.ƒS.positionPercent(80, 80));
+        await Template.ƒS.Character.show(Template.char.Donald, Template.char.Donald.pose.angry, Template.getCharPosPerc(Template.CHARACTERS.DONALD));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Donald.name, Template.dataForSave.protagonist.name.toLocaleUpperCase());
         await Template.ƒS.Speech.tell(Template.char.Donald.name, "WIR HABEN EIN GROßES PROBLEM!!!!");
@@ -127,6 +154,7 @@ var Template;
         }
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Donald unterbricht " + Template.dataForSave.protagonist.name + " aufgebracht:");
         await Template.ƒS.Speech.tell(Template.char.Donald.name, "SIE HABEN EINE WOCHE ZEIT!");
+        await Template.ƒS.Character.hide(Template.char.Donald);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " setzt seine/ihre Arbeit fort.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Aus unerklärlichen Gründen hat " + Template.dataForSave.protagonist.name + " es trotzdem noch geschafft seine Arbeit rechtzeitig zu erledigen und verlässt pünktlich die Arbeit.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " steigt in's Auto und fährt los um " + Template.char.Dina.name + " abzuholen.");
@@ -176,6 +204,12 @@ var Template;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
+    let CHARACTERS;
+    (function (CHARACTERS) {
+        CHARACTERS[CHARACTERS["ERZAHLER"] = 0] = "ERZAHLER";
+        CHARACTERS[CHARACTERS["DINA"] = 1] = "DINA";
+        CHARACTERS[CHARACTERS["DONALD"] = 2] = "DONALD";
+    })(CHARACTERS = Template.CHARACTERS || (Template.CHARACTERS = {}));
     Template.char = {
         Erzahler: {
             name: "Erzähler",
@@ -215,6 +249,17 @@ var Template;
             }
         }
     };
+    function getCharPosPerc(char) {
+        switch (char) {
+            case CHARACTERS.DINA:
+                return Template.ƒS.positionPercent(87, 95);
+            case CHARACTERS.ERZAHLER:
+                return Template.ƒS.positionPercent(10, 80);
+            case CHARACTERS.DONALD:
+                return Template.ƒS.positionPercent(80, 80);
+        }
+    }
+    Template.getCharPosPerc = getCharPosPerc;
 })(Template || (Template = {}));
 var Template;
 (function (Template) {
@@ -236,7 +281,7 @@ var Template;
 (function (Template) {
     async function dinasHaus() {
         Template.ƒS.Sound.fade(Template.sounds.jungle, 0.5, 1, true);
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
         await Template.ƒS.Location.show(Template.bg.dinasHaus);
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina sieht man schon von weitem.");
@@ -246,7 +291,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Je näher " + Template.dataForSave.protagonist.name + " aber an Sie herankommt, desto größer und größerscheint sie zu werden.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Angekommen bei Dina, zeigt sich ihre wahre Größe.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "'s Nacken tut leicht weh, wenn er/sie versucht ihr in die Augen zu schauen.");
-        await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.ƒS.positionPercent(85, 95));
+        await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.DINA));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "Hi Schatz!");
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "Danke, dass du mich abholst!");
@@ -261,7 +306,7 @@ var Template;
         switch (dinaDecisionElement) {
             case dinaDecision.aufregen:
                 Template.beAngry();
-                await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
+                await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.getCharPosPerc(Template.CHARACTERS.DINA));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "weißt Du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "immer gehts nur um dich und deine Probleme!");
@@ -286,10 +331,9 @@ var Template;
 (function (Template) {
     async function intro() {
         Template.ƒS.Sound.fade(Template.sounds.jungle, 0.5, 1, true);
-        await Template.ƒS.update(1);
         await Template.ƒS.Location.show(Template.bg.schlafzimmer);
-        await Template.ƒS.update(0.5);
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.animate(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getAnimation(Template.ANIMATION.ERZAHLERSLIDEIN));
+        // await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.char.Erzahler.text.T001);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.char.Erzahler.text.T002);
@@ -314,6 +358,7 @@ var Template;
             default:
                 break;
         }
+        await Template.ƒS.update(0.5);
         return "morgen";
     }
     Template.intro = intro;
@@ -321,17 +366,18 @@ var Template;
 var Template;
 (function (Template) {
     async function morgen() {
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
+        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " wacht an einem wunderschönen Tag auf.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "reckt und streckt sich und gähnt einmal ganz laut.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein ganz normaler Tag für " + Template.dataForSave.protagonist.name + ".");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als T-Rex hat man es nicht immer ganz so einfach im Leben. Die kurzen Arme machen manchmal das Leben ganz schön schwer.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "So macht " + Template.dataForSave.protagonist.name + " sich auf den Weg um sein/ihr morgentliches Ritual zu beginnen.");
         await Template.ƒS.Location.show(Template.bg.bad);
-        await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ganz klassisch fängt er/sie mit dem Zähneputzen an");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*schrub* *schrub* *schrub*");
         Template.ƒS.Sound.fade(Template.sounds.krack, 0.5, 0, false);
-        await Template.ƒS.update(2);
+        await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*krack*");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Da scheint " + Template.dataForSave.protagonist.name + " wohl zu viel Druck auf seiner Zahnbürste gehabt zu haben und diese ist abgebrochen.");
         let zahnbuersteDecision = {
@@ -368,7 +414,7 @@ var Template;
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Naja denkt sich " + Template.dataForSave.protagonist.name + "." + " Heute ist wohl einfach nicht sein/ihr Tag.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "*brrr* *brrrr*");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "s' Handy klingelt. Es ist Dina.");
-        await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.ƒS.positionPercent(87, 95));
+        await Template.ƒS.Character.animate(Template.char.Dina, Template.char.Dina.pose.normal, Template.getAnimation(Template.ANIMATION.DINASLIDEIN));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Hey Süßer/Süße, gut geschlafen?");
         let tagDecision = {
@@ -411,7 +457,7 @@ var Template;
 (function (Template) {
     async function alleinAbHaus() {
         await Template.ƒS.Location.show(Template.bg.kino);
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Der Film war schlecht.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "wieder nur so ein Actionfilm, indem die Erde droht zu explodieren, weil ein riesiger Komet auf die Erde zurast.");
@@ -437,7 +483,7 @@ var Template;
 (function (Template) {
     async function endeGut() {
         await Template.ƒS.Location.show(Template.bg.vulkan);
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Vor lauter Freude und Glück, die ganze Ereignisse heute gemeistert zu haben und immer entspannt zu bleiben,");
@@ -453,7 +499,7 @@ var Template;
 var Template;
 (function (Template) {
     async function endeNeutral() {
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Völlig geschockt bleibt " + Template.dataForSave.protagonist.name + " stehen.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Komplett aufgewühlt durch den Tag weiß " + Template.dataForSave.protagonist.name + " nicht was zu tun ist.");
@@ -475,7 +521,7 @@ var Template;
 var Template;
 (function (Template) {
     async function endeSchlecht() {
-        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.getCharPosPerc(Template.CHARACTERS.ERZAHLER));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "'Jetzt reichts!' denkt sich " + Template.dataForSave.protagonist.name);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Komplett außer Rand und Band rennt " + Template.dataForSave.protagonist.name + " davon.");
@@ -536,7 +582,7 @@ var Template;
             case kinoDecision.aufgeregt:
                 Template.beAngry();
                 Template.dataForSave.protagonist.dinaLovesYou = false;
-                await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
+                await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.angry, Template.getCharPosPerc(Template.CHARACTERS.DINA));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(Template.char.Dina.name, "Immer geht es nur um dich und deine Probleme.");

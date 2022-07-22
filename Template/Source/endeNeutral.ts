@@ -1,6 +1,6 @@
 namespace Template {
     export async function endeNeutral(): ƒS.SceneReturn {
-        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
+        await Template.ƒS.Character.show(char.Erzahler, char.Erzahler.pose.normal, getCharPosPerc(CHARACTERS.ERZAHLER));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Völlig geschockt bleibt " + dataForSave.protagonist.name + " stehen.");
         await Template.ƒS.Speech.tell(char.Erzahler.name, "Komplett aufgewühlt durch den Tag weiß " + dataForSave.protagonist.name + " nicht was zu tun ist.");

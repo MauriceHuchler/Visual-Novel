@@ -13,6 +13,22 @@ declare namespace Template {
     function beChill(): Promise<void>;
 }
 declare namespace Template {
+    enum ANIMATION {
+        ERZAHLERSLIDEIN = 0,
+        DINASLIDEIN = 1
+    }
+    function getAnimation(ani: ANIMATION): {
+        start: {
+            translation: ƒ.Vector2;
+        };
+        end: {
+            translation: ƒ.Vector2;
+        };
+        duration: number;
+        playmode: ƒ.ANIMATION_PLAYMODE;
+    };
+}
+declare namespace Template {
     function arbeit(): ƒS.SceneReturn;
 }
 declare namespace Template {
@@ -53,6 +69,11 @@ declare namespace Template {
     };
 }
 declare namespace Template {
+    enum CHARACTERS {
+        ERZAHLER = 0,
+        DINA = 1,
+        DONALD = 2
+    }
     let char: {
         Erzahler: {
             name: string;
@@ -92,6 +113,7 @@ declare namespace Template {
             };
         };
     };
+    function getCharPosPerc(char: CHARACTERS): ƒ.Vector2;
 }
 declare namespace Template {
     function credits(): ƒS.SceneReturn;

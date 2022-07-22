@@ -1,4 +1,10 @@
 namespace Template {
+    export enum CHARACTERS {
+        ERZAHLER,
+        DINA,
+        DONALD
+    }
+
     export let char = {
         Erzahler: {
             name: "Erzähler",
@@ -36,6 +42,17 @@ namespace Template {
             pose: {
                 angry: "./Images/characters/donaldAngry.png"
             }
+        }
+    }
+
+    export function getCharPosPerc(char: CHARACTERS) {
+        switch (char) {
+            case CHARACTERS.DINA:
+                return Template.ƒS.positionPercent(87, 95);
+            case CHARACTERS.ERZAHLER:
+                return Template.ƒS.positionPercent(10, 80);
+            case CHARACTERS.DONALD:
+                return Template.ƒS.positionPercent(80, 80);
         }
     }
 }

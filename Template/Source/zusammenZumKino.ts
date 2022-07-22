@@ -16,7 +16,7 @@ namespace Template {
             case kinoDecision.aufgeregt:
                 beAngry();
                 dataForSave.protagonist.dinaLovesYou = false;
-                await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, Template.ƒS.positionPercent(85, 95));
+                await Template.ƒS.Character.show(char.Dina, char.Dina.pose.angry, getCharPosPerc(CHARACTERS.DINA));
                 await Template.ƒS.update(0.1);
                 await Template.ƒS.Speech.tell(char.Dina.name, "Weißt du was? Ich mach das nichtmehr mit!");
                 await Template.ƒS.Speech.tell(char.Dina.name, "Immer geht es nur um dich und deine Probleme.");
