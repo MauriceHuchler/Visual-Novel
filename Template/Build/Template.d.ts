@@ -26,7 +26,11 @@ declare namespace Template {
             name: string;
             background: string;
         };
-        arbeit: {
+        arbeitSortiert: {
+            name: string;
+            background: string;
+        };
+        arbeitUnsortiert: {
             name: string;
             background: string;
         };
@@ -39,6 +43,10 @@ declare namespace Template {
             background: string;
         };
         vulkan: {
+            name: string;
+            background: string;
+        };
+        brokomet: {
             name: string;
             background: string;
         };

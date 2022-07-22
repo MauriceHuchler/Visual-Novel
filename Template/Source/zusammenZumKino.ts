@@ -28,7 +28,7 @@ namespace Template {
             case kinoDecision.entspannt:
                 beChill();
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Dina und " + dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
-                //TODO: brokomet einblenden
+                await ƒS.Location.show(bg.brokomet);
                 await Template.ƒS.Speech.tell(char.Erzahler.name, dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");
                 await Template.ƒS.Speech.tell(char.Erzahler.name, "Da fällt " + dataForSave.protagonist.name + " wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");

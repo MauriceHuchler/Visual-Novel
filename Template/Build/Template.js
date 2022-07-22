@@ -90,16 +90,18 @@ var Template;
 var Template;
 (function (Template) {
     async function arbeit() {
-        await Template.ƒS.Location.show(Template.bg.arbeit);
+        await Template.ƒS.Location.show(Template.bg.arbeitSortiert);
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         Template.ƒS.Sound.fade(Template.sounds.work, 0.5, 1, true);
-        await Template.ƒS.update(0.5);
+        await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Bei der Arbeit laufen die Dinge ganz gut.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " sitz in seinem/ihrem Büro an einem Schreibtisch");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und sortiert einige lose Blätter die ünber die Wochen liegen geblieben sind.");
         Template.ƒS.Sound.fade(Template.sounds.boom, 0.5, 0.1, false);
+        await Template.ƒS.Location.show(Template.bg.arbeitUnsortiert);
+        await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Plötzlich macht es einen gewaltigen rums.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dadurch wirbeln all deine sorgfältig sortierten Blätter auf und flattern durch die Luft.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dadurch wirbeln alle eben sorgfältig sortierten Blätter auf und flattern durch die Luft.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Die Tür fliegt auf und " + Template.dataForSave.protagonist.name + "s' Chef kommt durch die Tür gestampft.");
         await Template.ƒS.Character.show(Template.char.Donald, Template.char.Donald.pose.angry, Template.ƒS.positionPercent(80, 80));
         await Template.ƒS.update(0.1);
@@ -121,11 +123,11 @@ var Template;
                 Template.beChill();
                 break;
         }
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Donald lässt dich nicht ausreden und unterbricht dich mitten in deinem Satz mit:");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Donald unterbricht " + Template.dataForSave.protagonist.name + " aufgebracht:");
         await Template.ƒS.Speech.tell(Template.char.Donald.name, "SIE HABEN EINE WOCHE ZEIT!");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "setzt seine/ihre Arbeit fort.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "aus unerklärlichen Gründen hat " + Template.dataForSave.protagonist.name + " es trotzdem noch geschafft seine Arbeit innerhalb der Arbeitszeit auszuführen und verlässt pünktlich die Arbeit.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " steigt in sein/ihr Auto und fährt los um " + Template.char.Dina.name + " abzuholen.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " setzt seine/ihre Arbeit fort.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Aus unerklärlichen Gründen hat " + Template.dataForSave.protagonist.name + " es trotzdem noch geschafft seine Arbeit rechtzeitig zu erledigen und verlässt pünktlich die Arbeit.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " steigt in's Auto und fährt los um " + Template.char.Dina.name + " abzuholen.");
         await Template.ƒS.Character.hideAll();
         Template.ƒS.Sound.fade(Template.sounds.work, 0, 1, false);
         return "dinasHaus";
@@ -144,9 +146,13 @@ var Template;
             name: "bad",
             background: "./Images/backgrounds/badFarbe.png"
         },
-        arbeit: {
+        arbeitSortiert: {
             name: "arbeit",
-            background: "./Images/backgrounds/badSW.png" //TODO: right path
+            background: "./Images/backgrounds/arbeitFarbeSortiert.png"
+        },
+        arbeitUnsortiert: {
+            name: "arbeit",
+            background: "./Images/backgrounds/arbeitFarbeUnsortiert.png"
         },
         kino: {
             name: "kino",
@@ -158,7 +164,11 @@ var Template;
         },
         vulkan: {
             name: "vulkan",
-            background: "./Images/backgrounds/vulkanFarbe.png"
+            background: "./Images/backgrounds/vulkanbaseFarbe.png"
+        },
+        brokomet: {
+            name: "brokomet",
+            background: "./Images/backgrounds/brokometFarbe.png"
         }
     };
 })(Template || (Template = {}));
@@ -228,19 +238,19 @@ var Template;
         await Template.ƒS.Location.show(Template.bg.dinasHaus);
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina sieht man schon von weitem.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "ihr wunderschöner langer Hals kann man sehr schön erkennen");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ihre wundervollen rundlich geformten Beine und der lange Schwanz lassen Sie von den anderen Artgenossen abheben.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ihren wunderschöner langer Hals kann man schon von weitem erkennen");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Durch ihre wundervoll rundlich geformten Beine und der lange Schwanz hebt sie sich von den anderen Artgenossen ab.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Anfänglich denkt " + Template.dataForSave.protagonist.name + ", dass Dina früher doch noch größer war");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Je näher " + Template.dataForSave.protagonist.name + " aber an Dina herankommt fällt dir auf, wie Sie stetig wächst und wächst und immer größer wird.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Je näher " + Template.dataForSave.protagonist.name + " aber an Sie herankommt, desto größer und größerscheint sie zu werden.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Angekommen bei Dina, zeigt sich ihre wahre Größe.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + "'s Nacken tut leicht weh, wenn er/sie versucht ihr in die Augen zu schauen.");
         await Template.ƒS.Character.show(Template.char.Dina, Template.char.Dina.pose.normal, Template.ƒS.positionPercent(85, 95));
         await Template.ƒS.update(0.5);
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "Hi Schatz!");
-        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Danke dass du mich abholst!");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Danke, dass du mich abholst!");
         await Template.ƒS.Speech.tell(Template.char.Dina.name, "aber sag mal...");
-        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Du weißt dass ich ein Brachiosaurus bin.. und dadurch auch größere Sachen gewohnt bist.");
-        await Template.ƒS.Speech.tell(Template.char.Dina.name, "ich glaube nicht, dass ich ins Auto passe.");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Du weißt dass ich ein Brachiosaurus bin.. und dadurch größere Sachen gewohnt bin.");
+        await Template.ƒS.Speech.tell(Template.char.Dina.name, "Ich glaube nicht, dass Ich ins Auto passe.");
         let dinaDecision = {
             aufregen: "Mit Dina einen Streit anfangen und dich über deinen Tag beschweren.",
             entspannt: "Fehler eingestehen und zusammen nach einer Lösung suchen."
@@ -426,7 +436,7 @@ var Template;
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " kann heute nichtsmehr erschüttern");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Glück, all die schlechten Dinge heute so hinzunehmen wie sie sind und immer entspannt zu bleiben");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "strahlt Name mit einem riesigen lächeln");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "strahlt " + Template.dataForSave.protagonist.name + " mit einem riesigen lächeln");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "aus unerklärlichen Gründen merkt der Komet,");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "dass er heute keinen Schaden anrichten kann.");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "und macht einen großen Bogen um die Erde.");
@@ -441,7 +451,7 @@ var Template;
         //TODO: background = Brokomet
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "völlig geschockt bleibt Name stehen");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "völlig geschockt bleibt " + Template.dataForSave.protagonist.name + " stehen");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "komplett aufgewühlt durch den Tag weiß er/sie nicht was er/sie tun soll.");
         if (Template.dataForSave.protagonist.dinaLovesYou) {
             await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " nimmt Dina in den Arm und sagt ihr, dass er/sie sie liebt.");
@@ -462,7 +472,7 @@ var Template;
 (function (Template) {
     async function endeSchlecht() {
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(15, 80));
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "'jetzt reichts' denkt sich Name" + Template.dataForSave.protagonist.name);
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "'jetzt reichts' denkt sich " + Template.dataForSave.protagonist.name);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "komplett außer Rand und Band rennt " + Template.dataForSave.protagonist.name + " davon");
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "so könne der Tag nicht enden.");
         await Template.ƒS.Location.show(Template.bg.vulkan);
@@ -510,7 +520,7 @@ var Template;
         await Template.ƒS.Character.show(Template.char.Erzahler, Template.char.Erzahler.pose.normal, Template.ƒS.positionPercent(10, 80));
         await Template.ƒS.update(0.1);
         await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein bisschen erschöpft vom laufen, kommen die beiden am Kino an.");
-        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "durch die ganze Sache hat sich alles verzögert, sodass sie nichtmehr in den Film gelassen werden, da dieser schon angefangen hat.");
+        await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Leider sind Dina und " + Template.dataForSave.protagonist.name + " zu spät gekommen. Der Film hat bereits angefangen und man weigert sich die beiden noch in das Kino zu lassen.");
         let kinoDecision = {
             aufgeregt: "Mit Dina einen Streit anfangen und sich über den Tag beschweren",
             entspannt: "Ruhig bleiben und vorschlagen direkt etwas essen zu gehen."
@@ -531,17 +541,18 @@ var Template;
             case kinoDecision.entspannt:
                 Template.beChill();
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina und " + Template.dataForSave.protagonist.name + " gehen weiter zum Restaurant, dass Dina herausgesucht hatte");
+                await Template.ƒS.Location.show(Template.bg.brokomet);
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, Template.dataForSave.protagonist.name + " stockt kurz der Atem als er den Namen des Restaurants ließt");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Brokomet, das beste Vegane Resataurant der Zeit");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Da fällt Name wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Da fällt " + Template.dataForSave.protagonist.name + " wieder ein, dass Dina sich ausschließlich vegan ernährt, also nur von Pflanzen.");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "leicht genervt bestellt sich " + Template.dataForSave.protagonist.name + " eine Suppe.");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "trotz des anstrengenden Tages haben die beiden einen wunderschönen Abend zusammen und unterhalten sich über viele Dinge");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als die Suppe ankommt und Name eine Schuppe in der Suppe entdeckt");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "lässt er/sie sich nicht davon aufbringen und ist einfach nur froh Dina an seiner/ihrer Seite zu haben.");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich sehr lange dauert um Name einen Kuss zu geben");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Trotz des anstrengenden Tages haben die beiden einen wunderschönen Abend zusammen und unterhalten sich über viele Dinge");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Als die Suppe ankommt und " + Template.dataForSave.protagonist.name + " eine Schuppe in der Suppe entdeckt");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "lässt " + Template.dataForSave.protagonist.name + " sich nicht davon aufbringen und ist einfach nur froh Dina bei sich zu haben.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Dina beugt ihren langen Hals herunter, was wirklich seeeeeehr lange dauert um" + Template.dataForSave.protagonist.name + " einen Kuss zu geben");
                 await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Kurz bevor die beiden sich Küssen, schrecken beide auf");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "ein ohrenbetäubender Knall ist zu hören");
-                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinauas auf die Straße um nachzuschauen was passiert ist.");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "Ein ohrenbetäubender Knall ist zu hören");
+                await Template.ƒS.Speech.tell(Template.char.Erzahler.name, "vor lauter Panik laufen die beiden und mehrere andere Gäste auf hinaus auf die Straße um nachzuschauen was passiert ist.");
                 await Template.ƒS.Character.hideAll();
                 return "introEnde";
         }

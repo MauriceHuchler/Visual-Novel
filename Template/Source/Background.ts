@@ -9,9 +9,13 @@ namespace Template {
             name: "bad",
             background: "./Images/backgrounds/badFarbe.png"
         },
-        arbeit: {
+        arbeitSortiert: {
             name: "arbeit",
-            background: "./Images/backgrounds/badSW.png"//TODO: right path
+            background: "./Images/backgrounds/arbeitFarbeSortiert.png"
+        },
+        arbeitUnsortiert: {
+            name: "arbeit",
+            background: "./Images/backgrounds/arbeitFarbeUnsortiert.png"
         },
         kino: {
             name: "kino",
@@ -23,7 +27,11 @@ namespace Template {
         },
         vulkan: {
             name: "vulkan",
-            background: "./Images/backgrounds/vulkanFarbe.png" 
+            background: "./Images/backgrounds/vulkanbaseFarbe.png"
+        },
+        brokomet: {
+            name: "brokomet",
+            background: "./Images/backgrounds/brokometFarbe.png"
         }
     }
 }
